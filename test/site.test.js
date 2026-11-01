@@ -63,11 +63,12 @@ test('生成的每个代码块均与 README 完全一致，不用硬编码副本
   assert.equal(document.querySelectorAll('.plotly-graph-div').length, 2);
 });
 
-function browser({ desktop = false, theme = '', darkPreference = false } = {}) {
+function browser({ desktop = false, theme = '', darkPreference = false, beforeScript = () => {} } = {}) {
   const dom = new JSDOM(html, { url: 'https://alex-shan.github.io/python-cheatsheet/' + theme, runScripts: 'outside-only' });
   const media = new dom.window.EventTarget();
   media.matches = desktop;
   dom.window.matchMedia = (query) => query.includes('1280px') ? media : { matches: darkPreference };
+  beforeScript(dom.window);
   dom.window.eval(read('web/theme.js'));
   dom.window.eval(read('web/script_2.js'));
   return { ...dom, window: dom.window, media };
@@ -90,6 +91,51 @@ test('小屏目录可折叠，跳转后关闭并聚焦章节；宽屏保持展�
     assert.equal(toc.open, !desktop);
     window.close();
   }
+});
+
+test('滚动时持续定位当前章节，仅滚动目录内部，并支持反向滚动和页尾', () => {
+  const frames = [];
+  let position = 0;
+  const { window } = browser({ desktop: true, beforeScript(window) {
+    window.requestAnimationFrame = (callback) => frames.push(callback);
+    Object.defineProperty(window, 'scrollY', { get: () => position });
+    Object.defineProperty(window.document.documentElement, 'scrollHeight', { value: 250000 });
+    const headings = [...window.document.querySelectorAll('h2,h3')];
+    headings.forEach((heading, index) => {
+      heading.getBoundingClientRect = () => ({ top: 500 + index * 1000 - position });
+    });
+    const nav = window.document.querySelector('.site-toc nav');
+    nav.getBoundingClientRect = () => ({ top: 60, bottom: 660, height: 600 });
+    [...nav.querySelectorAll('a')].forEach((link, index) => {
+      link.getBoundingClientRect = () => {
+        const top = 60 + index * 30 - nav.scrollTop;
+        return { top, bottom: top + 30, height: 30 };
+      };
+    });
+  } });
+  const doc = window.document;
+  const nav = doc.querySelector('.site-toc nav');
+  const entries = [...nav.querySelectorAll('a')];
+  const scroll = (value) => {
+    position = value;
+    window.dispatchEvent(new window.Event('scroll'));
+    while (frames.length) frames.shift()();
+    assert.equal(window.scrollY, value);
+  };
+  scroll(50500);
+  assert.equal(nav.querySelector('[aria-current]').hash, entries[50].hash);
+  assert.ok(nav.scrollTop > 0);
+  const previousScroll = nav.scrollTop;
+  scroll(50900); // 标题已离开 viewport，仍处于同一长章节。
+  assert.equal(nav.querySelector('[aria-current]').hash, entries[50].hash);
+  assert.equal(nav.scrollTop, previousScroll);
+  scroll(3500);
+  assert.equal(nav.querySelector('[aria-current]').hash, entries[3].hash);
+  assert.ok(nav.scrollTop < previousScroll);
+  scroll(250000 - window.innerHeight);
+  assert.equal(nav.querySelector('[aria-current]').hash, entries.at(-1).hash);
+  assert.equal(nav.querySelectorAll('[aria-current]').length, 1);
+  window.close();
 });
 
 test('主题切换使用中文，并保留当前章节及显式浅色设置', () => {
