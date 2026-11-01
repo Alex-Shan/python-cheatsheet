@@ -1,52 +1,83 @@
-<details open><summary><strong>Which Python version is this for?</strong></summary><br>
-&nbsp;&nbsp;&nbsp;&nbsp;Everything should work in the latest Python version, which is 3.12. Every feature that requires version higher than 3.9 has that mentioned in comments or brackets. There are only two such features, both requiring 3.10.<br><br>
-&nbsp;&nbsp;&nbsp;&nbsp;As of 12th March 2024, the only libraries whose latest version requires Python version higher than 3.8 are: numpy, pandas and matplotlib. They all require Python 3.9. This cheatsheet covers numpy version 2.0 (or higher) that was released on 16th June, 2024 and pandas version 2.0 (or higher) that was released on 3rd April 2023.
-</details><br>
+<!DOCTYPE html>
+<html class="ocks-org" lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FAQ — Python Cheatsheet 中文版</title>
+  <meta name="description" content="Python Cheatsheet 的使用方法、术语说明和常见问题。">
+  <link rel="icon" href="favicon.svg">
+  <link rel="stylesheet" href="default.min.css">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    const theme = new URLSearchParams(location.search).get('theme');
+    const dark = theme ? theme.startsWith('dark') : matchMedia('(prefers-color-scheme: dark)').matches;
+    if (dark) {
+      const variant = ['dark', 'dark1', 'dark2', 'dark3'].includes(theme) ? theme : 'dark3';
+      document.write('<link rel="stylesheet" href="default_' + variant + '.min.css">');
+      document.write('<link rel="stylesheet" href="style_' + variant + '.css">');
+    }
+  </script>
+  <link rel="stylesheet" href="navigation.css">
+</head>
+<body>
+  <header><a href="../index.html">返回 Python Cheatsheet</a> · <a href="?theme=dark3" data-theme-toggle>切换深色主题</a></header>
+  <h1>FAQ</h1>
+  <p>本页译自原项目 FAQ，版本信息保留原文的历史背景。</p>
 
-<details open><summary><strong>How to use it?</strong></summary><br>
-&nbsp;&nbsp;&nbsp;&nbsp;This cheatsheet consists of minimal text and short examples so things are easy to find with <code>Ctrl+F</code> / <code>⌘F</code>. If you're on the webpage, searching for <code>'#&lt;name&gt;'</code> will only search for the titles. To get a link to a specific section click the grey hashtag next to the section's title before copying the address. To search for titles in the text editor use <code>^&lt;name&gt;</code> with enabled regular expressions option.<br><br>
-&nbsp;&nbsp;&nbsp;&nbsp;I also keep the Python console open at all times to test little snippets of code, to check out the available functions of a module using code completion and above all, to use <code>help(&lt;module/object/function/type/str&gt;)</code> command. If something is still unclear, then I search the Python docs by googling <code>'python docs &lt;module/function&gt;'</code>.<br><br>
-&nbsp;&nbsp;&nbsp;&nbsp;Recently I started using the ptpython REPL (Python console). It supports multiline editing, syntax validation, IDE-like autocompletion and syntax highlighting. It can be installed with <code>pip3 install ptpython</code>. Even more recently I switched to ipython REPL, which is very similar to ptpython only more responsive. It can be installed with <code>pip3 install ipython</code>.
-</details><br>
+  <details open><summary><strong>适用于哪个 Python 版本？</strong></summary>
+    <p>原文以 Python 3.12 为基准。要求高于 3.9 的 features 会在注释或括号中标明；原文说明有两项需要 3.10。</p>
+    <p>截至 2024 年 3 月 12 日，所用 libraries 中，最新版要求高于 Python 3.8 的只有 NumPy、Pandas 和 Matplotlib，均要求 Python 3.9。本文介绍 NumPy 2.0（2024 年 6 月 16 日发布）及以上版本，以及 Pandas 2.0（2023 年 4 月 3 日发布）及以上版本。</p>
+  </details>
 
-<details open><summary><strong>What does the '&lt;type&gt;' signify?</strong></summary><br>
-&nbsp;&nbsp;&nbsp;&nbsp;It is a placeholder for an object. It needs to be replaced by an expression, literal or a variable that returns/is of that type. However, if it is located on the left side of an assignment (<code>=</code>) then it signifies what type of object is produced/returned by the expression on the right side of the assignment.
-</details><br>
+  <details open><summary><strong>如何使用？</strong></summary>
+    <p>本文用精简的说明和短示例，便于通过 <code>Ctrl+F</code> / <code>⌘F</code> 查找内容。网页提供章节目录；搜索 <code>#&lt;name&gt;</code> 可定位主要标题。点击标题旁的 <code>#</code>，再复制地址，即可获取该章节的链接。在文本编辑器中，可开启 regular expression 搜索并输入 <code>^&lt;name&gt;</code> 查找标题。</p>
+    <p>阅读时可以打开 Python console，测试小段代码、通过 code completion 查看 module 提供的 functions，并使用 <code>help(&lt;module/object/function/type/str&gt;)</code>。仍有疑问时，可以搜索 <code>python docs &lt;module/function&gt;</code> 查阅 Python docs。</p>
+    <p>原作者曾使用 ptpython REPL，支持多行编辑、syntax validation、类似 IDE 的 autocompletion 和 syntax highlighting，可用 <code>pip3 install ptpython</code> 安装；后来改用响应更快的 IPython REPL，可用 <code>pip3 install ipython</code> 安装。</p>
+  </details>
 
-<details open><summary><strong>Why the '&lt;type&gt;' semantics?</strong></summary><br>
-&nbsp;&nbsp;&nbsp;&nbsp;It makes examples much less ambiguous.
-</details><br>
+  <details open><summary><strong><code>&lt;type&gt;</code> 表示什么？</strong></summary>
+    <p>它是 object 的 placeholder，需要替换成返回或属于该 type 的 expression、literal 或 variable。若出现在 assignment（<code>=</code>）左侧，则表示右侧 expression 创建或返回的 object 的 type。</p>
+  </details>
 
-<details open><summary><strong>What exactly is <code>&lt;el&gt;</code>?</strong></summary><br>
-&nbsp;&nbsp;&nbsp;&nbsp;El is short for element and can be any object, but it usually denotes an object that is an item of a collection.
-</details><br>
+  <details open><summary><strong>为什么采用 <code>&lt;type&gt;</code> 这种写法？</strong></summary>
+    <p>它能减少示例中的歧义。</p>
+  </details>
 
-<details open><summary><strong>What exactly is <code>&lt;collection&gt;</code>?</strong></summary><br>
-&nbsp;&nbsp;&nbsp;&nbsp;Collection is my name for an iterable object. An iterable object in Python is any object that has at least one of iter() and getitem() special methods defined. By convention, <code>&lt;object&gt;.__iter__()</code> should return an iterator of object's items and <code>&lt;object&gt;.__getitem__(&lt;index&gt;)</code> an item at that index. I chose not to use the name iterable because it sounds scarier and more vague than collection, even though it has a precise definition.<br><br>
-&nbsp;&nbsp;&nbsp;&nbsp;To make matters a bit more confusing, an abstract base class called Iterable doesn't fully follow this definition. An expression <code>instanceof(&lt;object&gt;, collections.abc.Iterable)</code> only checks whether an object has iter() special method, disregarding the getitem().<br><br>
-&nbsp;&nbsp;&nbsp;&nbsp;Although collection has no definition in Python's <a href="https://docs.python.org/3/glossary.html">glossary</a>, there exists a Collection abstract base class. Expression <code>instanceof(&lt;object&gt;, collections.abc.Collection)</code> returns 'True' for any object that has len(), iter() and contains() special methods defined. <code>&lt;object&gt;.__len__()</code> should return the number of elements and <code>&lt;object&gt;.__contains__(&lt;el&gt;)</code> should check if object contains the passed element.
-</details><br>
+  <details open><summary><strong><code>&lt;el&gt;</code> 到底是什么？</strong></summary>
+    <p>El 是 element 的缩写，可以是任意 object，通常表示 collection 中的一个 item。</p>
+  </details>
 
-<details open><summary><strong>What about PEP 8?</strong></summary><br>
-&nbsp;&nbsp;&nbsp;&nbsp;Check out <a href="https://google.github.io/styleguide/pyguide.html">Google Style Guide</a> and use <code>Ctrl+Alt+L</code> / <code>⌥⌘L</code> shortcut in PyCharm to automatically reformat code.
-</details><br>
+  <details open><summary><strong><code>&lt;collection&gt;</code> 到底是什么？</strong></summary>
+    <p>Collection 是原作者对 iterable object 的称呼。在 Python 中，只要 object 定义了 iter() 或 getitem() special method，就可以迭代。按约定，<code>&lt;object&gt;.__iter__()</code> 返回遍历其 items 的 iterator，<code>&lt;object&gt;.__getitem__(&lt;index&gt;)</code> 返回指定 index 处的 item。原作者觉得 collection 比 iterable 更直观，因此采用这一称呼。</p>
+    <p>Iterable abstract base class 与这个定义并不完全一致：<code>isinstance(&lt;object&gt;, collections.abc.Iterable)</code> 只检查 iter() special method，不检查 getitem()。</p>
+    <p>Python <a href="https://docs.python.org/3/glossary.html">术语表</a>未定义 collection，但提供了 Collection abstract base class。对于同时定义 len()、iter() 和 contains() special methods 的 object，<code>isinstance(&lt;object&gt;, collections.abc.Collection)</code> 返回 True。<code>&lt;object&gt;.__len__()</code> 应返回 elements 的数量，<code>&lt;object&gt;.__contains__(&lt;el&gt;)</code> 应检查是否包含指定 element。</p>
+  </details>
 
-<details open><summary><strong>Why are there no blank lines between method definitions?</strong></summary><br>
-&nbsp;&nbsp;&nbsp;&nbsp;This way classes can be copy-pasted into the Python console, which would otherwise raise IndentationError.
-</details><br>
+  <details open><summary><strong>关于 PEP 8 呢？</strong></summary>
+    <p>可以参考 <a href="https://google.github.io/styleguide/pyguide.html">Google Style Guide</a>。在 PyCharm 中使用 <code>Ctrl+Alt+L</code> / <code>⌥⌘L</code> 自动格式化代码。</p>
+  </details>
 
-<details open><summary><strong>Why are tests not covered?</strong></summary><br>
-&nbsp;&nbsp;&nbsp;&nbsp;Check out <a href="https://docs.python-guide.org/writing/tests/">The Hitchhiker’s Guide to Python</a> for a nice overview.
-</details><br>
+  <details open><summary><strong>为什么 method 定义之间没有空行？</strong></summary>
+    <p>这样可以将整个 class 复制到 Python console；定义之间存在空行时，可能触发 IndentationError。</p>
+  </details>
 
-<details open><summary><strong>Django?</strong></summary><br>
-&nbsp;&nbsp;&nbsp;&nbsp;Here is a nice <a href="https://github.com/kickstartcoding/cheatsheets/blob/master/build/topical/django.jpg">Django cheatsheet</a>.
-</details><br>
+  <details open><summary><strong>为什么没有介绍 tests？</strong></summary>
+    <p><a href="https://docs.python-guide.org/writing/tests/">The Hitchhiker’s Guide to Python</a> 提供了相关概述。</p>
+  </details>
 
-<details open><summary><strong>Why are there no concrete Regex examples?</strong></summary><br>
-&nbsp;&nbsp;&nbsp;&nbsp;Regular expressions are a separate technology that is independent from Python. There are many resources available online.
-</details><br>
+  <details open><summary><strong>Django 呢？</strong></summary>
+    <p>可参考这份 <a href="https://github.com/kickstartcoding/cheatsheets/blob/master/build/topical/django.jpg">Django Cheatsheet</a>。</p>
+  </details>
 
-<details open><summary><strong>Why are descriptors not covered?</strong></summary><br>
-&nbsp;&nbsp;&nbsp;&nbsp;Because property decorator is sufficient for everyday use.
-</details><br>
+  <details open><summary><strong>为什么没有具体的 Regex 示例？</strong></summary>
+    <p>Regular expression 是独立于 Python 的技术，网上有很多相关资料。</p>
+  </details>
+
+  <details open><summary><strong>为什么没有介绍 descriptors？</strong></summary>
+    <p>Property decorator 已足以满足日常使用。</p>
+  </details>
+
+  <footer>原作者：<a href="https://github.com/gto76/python-cheatsheet">Jure Šorn</a> · <a href="../index.html">返回正文</a></footer>
+  <script src="theme.js"></script>
+</body>
+</html>

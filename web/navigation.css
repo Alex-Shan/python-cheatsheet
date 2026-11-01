@@ -1,0 +1,105 @@
+/* 中文版排版及目录；在主题样式之后加载。 */
+.ocks-org body {
+  font-family: "PT Serif", "PingFang SC", "Microsoft YaHei", sans-serif;
+  box-sizing: border-box;
+  width: min(100%, 992px);
+}
+.ocks-org h1, .ocks-org h2, .ocks-org h3, .ocks-org h4 {
+  font-family: "PT Sans", "PingFang SC", "Microsoft YaHei", sans-serif;
+  scroll-margin-top: 1rem;
+}
+.ocks-org p, .ocks-org li { line-height: 1.7; }
+.ocks-org pre {
+  overflow-x: auto;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.ocks-org pre code { white-space: pre; }
+.ocks-org img { max-width: 100%; height: auto; }
+.ocks-org .site-toc {
+  border: 1px solid currentColor;
+  border-radius: 6px;
+  padding: 0.75rem;
+  margin: 1rem 0 1.5rem;
+  font: 14px/1.5 "PT Sans", "PingFang SC", "Microsoft YaHei", sans-serif;
+  color: inherit;
+}
+.ocks-org .site-toc summary {
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+}
+.ocks-org .site-toc nav {
+  max-height: 55vh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  margin-top: 0.75rem;
+}
+.ocks-org .site-toc ul {
+  list-style: none;
+  width: auto;
+  margin: 0;
+  padding: 0;
+}
+.ocks-org .site-toc ul ul { padding-left: 0.8rem; }
+.ocks-org .site-toc li {
+  width: auto;
+  padding: 0;
+  margin: 0;
+  line-height: 1.4;
+}
+.ocks-org .site-toc a {
+  display: block;
+  padding: 0.3rem 0.4rem;
+  border-radius: 3px;
+  color: inherit;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+.ocks-org .site-toc a:hover,
+.ocks-org .site-toc a[aria-current="location"] { background: rgba(127,127,127,0.18); }
+.ocks-org .site-toc a:focus-visible,
+.ocks-org .site-toc summary:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+.ocks-org .plotly-graph-div { max-width: 100%; }
+.ocks-org #return-to-top { text-align: center; font-size: 28px; color: #fff; text-decoration: none; }
+@media (min-width: 1280px) {
+  .ocks-org body { margin-left: 280px; margin-right: auto; }
+  .ocks-org .site-toc {
+    position: fixed;
+    left: 16px;
+    top: 16px;
+    width: 224px;
+    max-height: calc(100vh - 64px);
+    margin: 0;
+    z-index: 10;
+  }
+  .ocks-org .site-toc nav { max-height: calc(100vh - 130px); }
+  .ocks-org .site-toc summary { cursor: pointer; }
+}
+@media (max-width: 1279px) {
+  .ocks-org body { width: min(100%, 992px); margin: 1rem auto; }
+}
+@media (max-width: 767px) {
+  .ocks-org body { width: 100%; padding: 0.75rem; font-size: 15px; }
+  .ocks-org h1 { font-size: 2rem !important; letter-spacing: normal; }
+  .ocks-org h2 { font-size: 1.65rem; }
+  .ocks-org h3 { font-size: 1.25rem; }
+  .ocks-org h3, .ocks-org h4, .ocks-org p, .ocks-org ul,
+  .ocks-org body > p, .ocks-org div > p, .ocks-org li {
+    width: auto !important;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-wrap: anywhere;
+  }
+  .ocks-org .banner, .ocks-org h1, .ocks-org img {
+    min-width: 0;
+    max-width: 100%;
+  }
+  .ocks-org pre { padding: 0.5rem; font-size: 12px; }
+  .ocks-org .site-toc ul { padding-left: 0; }
+  .ocks-org .site-toc ul ul { padding-left: 0.8rem; }
+}
+@media print {
+  .ocks-org .site-toc, .ocks-org #return-to-top { display: none; }
+  .ocks-org body { margin: 0 auto; width: auto; }
+}

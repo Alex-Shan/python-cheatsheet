@@ -10,7 +10,7 @@ if (document.getElementById("e23ccacc-a456-478b-b467-7282a2165921")) {
               "line": {
                 "color": "#EF553B"
               },
-              "name": "Total Cases",
+              "name": "累计病例数",
               "x": [
                 "2020-02-23",
                 "2020-02-24",
@@ -4048,7 +4048,7 @@ if (document.getElementById("e23ccacc-a456-478b-b467-7282a2165921")) {
               "line": {
                 "color": "#FFA15A"
               },
-              "name": "Gold",
+              "name": "黄金",
               "x": [
                 "2020-02-23",
                 "2020-02-24",
@@ -6211,7 +6211,7 @@ if (document.getElementById("e23ccacc-a456-478b-b467-7282a2165921")) {
             },
             "yaxis": {
               "title": {
-                "text": "Total Cases"
+                "text": "累计病例数"
               },
               "rangemode": "tozero"
             },

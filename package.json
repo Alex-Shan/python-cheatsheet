@@ -1,0 +1,18 @@
+{
+  "name": "python-cheatsheet-cn",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Python Cheatsheet 简体中文版及静态页面生成器",
+  "scripts": {
+    "build": "node parse.js",
+    "test": "node --test test/site.test.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "highlightjs": "9.12.0",
+    "jsdom": "22.1.0",
+    "showdown": "2.1.0"
+  }
+}

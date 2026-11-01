@@ -7,8 +7,8 @@ if (document.getElementById("2a950764-39fc-416d-97fe-0a6226a3095f")) {
         {
           "data": [
             {
-              "hovertemplate": "Continent=South America<br>Date=%{x}<br>Total Deaths per Million=%{y}<extra></extra>",
-              "legendgroup": "South America",
+              "hovertemplate": "大洲=南美洲<br>日期=%{x}<br>每百万人累计死亡人数=%{y}<extra></extra>",
+              "legendgroup": "南美洲",
               "line": {
                 "color": "#636efa",
                 "dash": "solid"
@@ -17,7 +17,7 @@ if (document.getElementById("2a950764-39fc-416d-97fe-0a6226a3095f")) {
                 "symbol": "circle"
               },
               "mode": "lines",
-              "name": "South America",
+              "name": "南美洲",
               "showlegend": true,
               "x": [
                 "2020-02-23",
@@ -1362,8 +1362,8 @@ if (document.getElementById("2a950764-39fc-416d-97fe-0a6226a3095f")) {
               "type": "scattergl"
             },
             {
-              "hovertemplate": "Continent=North America<br>Date=%{x}<br>Total Deaths per Million=%{y}<extra></extra>",
-              "legendgroup": "North America",
+              "hovertemplate": "大洲=北美洲<br>日期=%{x}<br>每百万人累计死亡人数=%{y}<extra></extra>",
+              "legendgroup": "北美洲",
               "line": {
                 "color": "#EF553B",
                 "dash": "solid"
@@ -1372,7 +1372,7 @@ if (document.getElementById("2a950764-39fc-416d-97fe-0a6226a3095f")) {
                 "symbol": "circle"
               },
               "mode": "lines",
-              "name": "North America",
+              "name": "北美洲",
               "showlegend": true,
               "x": [
                 "2020-02-23",
@@ -2717,8 +2717,8 @@ if (document.getElementById("2a950764-39fc-416d-97fe-0a6226a3095f")) {
               "type": "scattergl"
             },
             {
-              "hovertemplate": "Continent=Europe<br>Date=%{x}<br>Total Deaths per Million=%{y}<extra></extra>",
-              "legendgroup": "Europe",
+              "hovertemplate": "大洲=欧洲<br>日期=%{x}<br>每百万人累计死亡人数=%{y}<extra></extra>",
+              "legendgroup": "欧洲",
               "line": {
                 "color": "#00cc96",
                 "dash": "solid"
@@ -2727,7 +2727,7 @@ if (document.getElementById("2a950764-39fc-416d-97fe-0a6226a3095f")) {
                 "symbol": "circle"
               },
               "mode": "lines",
-              "name": "Europe",
+              "name": "欧洲",
               "showlegend": true,
               "x": [
                 "2020-02-23",
@@ -4072,8 +4072,8 @@ if (document.getElementById("2a950764-39fc-416d-97fe-0a6226a3095f")) {
               "type": "scattergl"
             },
             {
-              "hovertemplate": "Continent=Asia<br>Date=%{x}<br>Total Deaths per Million=%{y}<extra></extra>",
-              "legendgroup": "Asia",
+              "hovertemplate": "大洲=亚洲<br>日期=%{x}<br>每百万人累计死亡人数=%{y}<extra></extra>",
+              "legendgroup": "亚洲",
               "line": {
                 "color": "#ab63fa",
                 "dash": "solid"
@@ -4082,7 +4082,7 @@ if (document.getElementById("2a950764-39fc-416d-97fe-0a6226a3095f")) {
                 "symbol": "circle"
               },
               "mode": "lines",
-              "name": "Asia",
+              "name": "亚洲",
               "showlegend": true,
               "x": [
                 "2020-02-23",
@@ -5427,8 +5427,8 @@ if (document.getElementById("2a950764-39fc-416d-97fe-0a6226a3095f")) {
               "type": "scattergl"
             },
             {
-              "hovertemplate": "Continent=Africa<br>Date=%{x}<br>Total Deaths per Million=%{y}<extra></extra>",
-              "legendgroup": "Africa",
+              "hovertemplate": "大洲=非洲<br>日期=%{x}<br>每百万人累计死亡人数=%{y}<extra></extra>",
+              "legendgroup": "非洲",
               "line": {
                 "color": "#FFA15A",
                 "dash": "solid"
@@ -5437,7 +5437,7 @@ if (document.getElementById("2a950764-39fc-416d-97fe-0a6226a3095f")) {
                 "symbol": "circle"
               },
               "mode": "lines",
-              "name": "Africa",
+              "name": "非洲",
               "showlegend": true,
               "x": [
                 "2020-02-23",
@@ -6782,8 +6782,8 @@ if (document.getElementById("2a950764-39fc-416d-97fe-0a6226a3095f")) {
               "type": "scattergl"
             },
             {
-              "hovertemplate": "Continent=Oceania<br>Date=%{x}<br>Total Deaths per Million=%{y}<extra></extra>",
-              "legendgroup": "Oceania",
+              "hovertemplate": "大洲=大洋洲<br>日期=%{x}<br>每百万人累计死亡人数=%{y}<extra></extra>",
+              "legendgroup": "大洋洲",
               "line": {
                 "color": "#19d3f3",
                 "dash": "solid"
@@ -6792,7 +6792,7 @@ if (document.getElementById("2a950764-39fc-416d-97fe-0a6226a3095f")) {
                 "symbol": "circle"
               },
               "mode": "lines",
-              "name": "Oceania",
+              "name": "大洋洲",
               "showlegend": true,
               "x": [
                 "2020-02-23",
@@ -8962,7 +8962,7 @@ if (document.getElementById("2a950764-39fc-416d-97fe-0a6226a3095f")) {
                 1.0
               ],
               "title": {
-                "text": "Date"
+                "text": "日期"
               }
             },
             "yaxis": {
@@ -8972,12 +8972,12 @@ if (document.getElementById("2a950764-39fc-416d-97fe-0a6226a3095f")) {
                 1.0
               ],
               "title": {
-                "text": "Total Deaths per Million"
+                "text": "每百万人累计死亡人数"
               }
             },
             "legend": {
               "title": {
-                "text": "Continent"
+                "text": "大洲"
               },
               "tracegroupgap": 0
             },
