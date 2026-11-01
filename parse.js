@@ -6,6 +6,7 @@ const path = require('node:path');
 const { JSDOM } = require('jsdom');
 const showdown = require('showdown');
 const hljs = require('highlightjs');
+const tocLabel = require('./web/toc-label');
 
 const root = __dirname;
 const read = (file) => fs.readFileSync(path.join(root, file), 'utf8');
@@ -58,7 +59,7 @@ for (const heading of headings) {
   const item = doc.createElement('li');
   const link = doc.createElement('a');
   link.href = '#' + heading.id;
-  link.textContent = heading.textContent;
+  link.textContent = tocLabel(heading);
   item.append(link);
   if (heading.tagName === 'H2' || !section) {
     list.append(item);

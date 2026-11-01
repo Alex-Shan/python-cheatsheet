@@ -5,6 +5,7 @@ const path = require('node:path');
 const { execFileSync } = require('node:child_process');
 const { JSDOM } = require('jsdom');
 const showdown = require('showdown');
+const tocLabel = require('../web/toc-label');
 
 const root = path.resolve(__dirname, '..');
 const read = (file) => fs.readFileSync(path.join(root, file), 'utf8');
@@ -41,12 +42,15 @@ test('目录覆盖所有二、三级标题，ID 唯一且内部链接均有效',
     if (link.hash) assert.ok(document.getElementById(decodeURIComponent(link.hash.slice(1))), link.hash);
   }
   for (const [index, heading] of headings.entries()) {
-    assert.equal(entries[index].textContent, heading.textContent.replace(/^#/, ''));
+    assert.equal(entries[index].textContent, tocLabel(heading));
+    assert.match(entries[index].textContent, /[\u4e00-\u9fff].*（[A-Za-z].*）$/);
     if (heading.tagName === 'H3') assert.ok(entries[index].closest('ul').parentElement.matches('li'));
   }
   assert.ok(document.querySelector('.site-toc[open] summary'));
   assert.ok(document.getElementById('inline-1'));
   assert.ok(document.getElementById('inline-2'));
+  assert.equal(document.querySelector('.site-toc a[href="#list"]').textContent, '列表（List）');
+  assert.equal(document.querySelector('#list').textContent, '#List');
 });
 
 test('生成的每个代码块均与 README 完全一致，不用硬编码副本覆盖注释', () => {

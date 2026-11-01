@@ -15,6 +15,7 @@
   box-sizing: border-box;
 }
 .ocks-org pre code { white-space: pre; }
+.ocks-org :not(pre) > code { color: var(--inline-code-color, #c62828); }
 .ocks-org img { max-width: 100%; height: auto; }
 .ocks-org .site-toc {
   border: 1px solid currentColor;

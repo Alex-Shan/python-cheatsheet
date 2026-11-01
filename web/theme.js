@@ -1,6 +1,7 @@
 (() => {
   const chosen = new URLSearchParams(window.location.search).get('theme');
   const dark = chosen ? chosen.startsWith('dark') : window.matchMedia('(prefers-color-scheme: dark)').matches;
+  document.documentElement.style.setProperty('--inline-code-color', dark ? '#ff7575' : '#c62828');
   const toggle = document.querySelector('[data-theme-toggle]');
   if (toggle) {
     const url = new URL(window.location.href);
