@@ -1,8 +1,10 @@
 const labels = require('./toc-labels.json');
 
-// 正文标题和 anchors 保持原样，目录单独展示中英文。
+// 正文与目录共用双语名称，保留原有英文 anchors。
 module.exports = function tocLabel(heading) {
   const title = heading.textContent.replace(/^#/, '');
+  const bilingual = title.match(/^(.+)（([^（）]+)）$/);
+  if (bilingual && labels[bilingual[2]] === bilingual[1]) return title;
   const translatedHeadings = {
     '示例': /^examples(?:-|$)/.test(heading.id) ? 'Examples' : 'Example',
     '选项': 'Options',

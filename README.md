@@ -18,16 +18,14 @@ Python Cheatsheet 中文版
 **&nbsp;&nbsp;&nbsp;** **8. 多媒体（Multimedia）：** **&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**  **[`数值计算（NumPy）`](#numpy)**__,__ **[`图像（Image）`](#image)**__,__ **[`动画（Animation）`](#animation)**__,__ **[`音频（Audio）`](#audio)**__,__ **[`合成器（Synthesizer）`](#synthesizer)**__,__ **[`游戏开发（Pygame）`](#pygame)**__,__ **[`数据分析（Pandas）`](#pandas)**__,__ **[`交互式绘图（Plotly）`](#plotly)**__.__
 
 
-Main
-----
+<h2 id="main">主入口（Main）</h2>
 ```python
 if __name__ == '__main__':      # 文件被 import 时，不执行下方缩进的代码。
     main()                      # 执行用户定义的`def main(): ...` function。
 ```
 
 
-List
-----
+<h2 id="list">列表（List）</h2>
 ```python
 <list> = [<el>, <el>, ...]      # 创建新的 list object。例如 `list_a = [1, 2, 3]`。
 ```
@@ -75,8 +73,7 @@ flatter_list     = list(itertools.chain.from_iterable(<list>))
 ```
 
 
-Dictionary
-----------
+<h2 id="dictionary">字典（Dictionary）</h2>
 ```python
 <dict> = {key: val, key: val, ...}            # 使用 `<dict>[key]` 获取或分配 value。
 ```
@@ -106,7 +103,7 @@ value = <dict>.pop(key)                       # 移除并返回 item；不存在
 {k: v for k, v in <dict>.items() if k in ks}  # 返回包含指定 keys 的 items 的 dict。
 ```
 
-### Counter
+<h3 id="counter">计数器（Counter）</h3>
 ```python
 >>> from collections import Counter
 >>> counter = Counter(['blue', 'blue', 'red'])
@@ -116,8 +113,7 @@ value = <dict>.pop(key)                       # 移除并返回 item；不存在
 ```
 
 
-Set
----
+<h2 id="set">集合（Set）</h2>
 ```python
 <set> = {<el>, <el>, ...}           # 由不重复 items 组成的 collection。也可用 set()、set(<coll>)。
 ```
@@ -144,7 +140,7 @@ Set
 <set>.discard(<el>)                 # 等价于 remove() but it doesn't raise an error.
 ```
 
-### Frozen Set
+<h3 id="frozenset">不可变集合（Frozen Set）</h3>
 * **Frozenset 是普通 set 的 immutable、hashable 版本。**
 * **因此，它可以作为 dict 的 key，也可以作为 set 的 item。**
 ```python
@@ -152,8 +148,7 @@ Set
 ```
 
 
-Tuple
------
+<h2 id="tuple">元组（Tuple）</h2>
 **Tuple 是 immutable 且 hashable 的 list。**
 ```python
 <tuple> = ()                        # 返回空的 tuple。还有tuple()、tuple(<coll>)。
@@ -161,7 +156,7 @@ Tuple
 <tuple> = (<el>, <el> [, ...])      # 返回 tuple。或 `<tuple> = <el>, <el> [, ...]`。
 ```
 
-### Named Tuple
+<h3 id="namedtuple">具名元组（Named Tuple）</h3>
 **带有具名 elements 的 tuple subclass。**
 ```python
 >>> import collections as co
@@ -174,8 +169,7 @@ Point(x=1, y=2)
 ```
 
 
-Range
------
+<h2 id="range">整数范围（Range）</h2>
 **由等间距 integers 组成的 sequence。**
 ```python
 <range> = range(stop)                # 即 range(to_exclusive). Ints from 0 to `stop-1`.
@@ -188,7 +182,7 @@ Range
 [0, 1, 2]
 ```
 
-### Enumerate
+<h3 id="enumerate">枚举索引（Enumerate）</h3>
 **将 collection 与 range 逐项配对的 iterator。**
 ```python
 for i, el in enumerate(<coll>):
@@ -196,8 +190,7 @@ for i, el in enumerate(<coll>):
 ```
 
 
-Iterator
---------
+<h2 id="iterator">迭代器（Iterator）</h2>
 **由 elements 组成、可能无限延伸的 stream。**
 
 ```python
@@ -227,8 +220,7 @@ import itertools as it
 * **for loop 会调用 `'iter(<coll/iter>)'`；对 iterator 调用时会返回它自身。**
 
 
-Generator
----------
+<h2 id="generator">生成器（Generator）</h2>
 * **任何包含 yield statement 的 function 都会返回 generator。**
 * **Generator 和 iterator 可以互换使用，见 [Iterator](#iterator-1) duck type。**
 
@@ -246,8 +238,7 @@ def count(start, step):
 ```
 
 
-Type
-----
+<h2 id="type">类型（Type）</h2>
 * **Python 中的所有 values 都是 objects。**
 * **每个 object 都有确定的 type。**
 * **Type 与 class 在这里含义相同。**
@@ -267,7 +258,7 @@ Type
 from types import FunctionType, MethodType, LambdaType, GeneratorType
 ```
 
-### Abstract Base Classes
+<h3 id="abstractbaseclasses">抽象基类（Abstract Base Classes）</h3>
 **每个 abstract base class 都规定了一组 virtual subclasses。isinstance() 和 issubclass() 会将这些 classes 识别为该 ABC 的 [subclasses](#subclass)，即使它们并未实际继承该 ABC。ABC 也可以自行判断某个 class 是否属于它的 virtual subclass，通常依据该 class 实现的 methods。例如，Iterable ABC 检查 iter() method，而 Collection ABC 检查 iter()、contains() 和 len()。**
 
 ```python
@@ -305,8 +296,7 @@ True
 ```
 
 
-String
-------
+<h2 id="string">字符串（String）</h2>
 **由字符组成的 immutable sequence。**
 ```python
 <str>  = 'abc'                       # 也可用 "abc"，会解释 \n、\t、\x00-\xff 等 escape sequences。
@@ -354,8 +344,7 @@ String
 ```
 
 
-Regex
------
+<h2 id="regex">正则表达式（Regex）</h2>
 **用于 regular expression 匹配的 functions。**
 
 ```python
@@ -375,7 +364,7 @@ import re
 * **`'flags=re.DOTALL'` 使 `'.'` 除其他字符外也能匹配 `'\n'`。**
 * **`'re.compile(r"<regex>")'` 返回带有 sub()、findall() 等 methods 的 Pattern object。**
 
-### Match Object
+<h3 id="matchobject">匹配对象（Match Object）</h3>
 ```python
 <str>   = <Match>.group()                # 返回完整的匹配结果。也可用 group(0)。
 <str>   = <Match>.group(1)               # 返回第一个括号内的部分。
@@ -384,7 +373,7 @@ import re
 <int>   = <Match>.end()                  # 返回匹配结束位置的 index 加一。
 ```
 
-### Special Sequences
+<h3 id="specialsequences">特殊序列（Special Sequences）</h3>
 ```python
 '\d' == '[0-9]'                          # 也包括 [०-९…]，匹配 decimal 字符。
 '\w' == '[a-zA-Z0-9_]'                   # 也包括 [ª²³…]，匹配 alphanumeric 字符或 _。
@@ -394,8 +383,7 @@ import re
 * **使用大写字母（如 `'\D'`、`'\W'` 或 `'\S'`）表示取反。若同时使用 ASCII flag，这些大写形式也会匹配所有非 ASCII 字符。**
 
 
-Format
-------
+<h2 id="format">格式化（Format）</h2>
 **String 格式化机制。**
 ```perl
 <str> = f'{<obj>}, {<obj>}'             # 大括号还可以包含 expressions。
@@ -403,7 +391,7 @@ Format
 <str> = '%s, %s' % (<obj>, <obj>)       # 较旧且功能重复的 formatting method。
 ```
 
-<h3 id="example">示例</h3>
+<h3 id="example">示例（Example）</h3>
 ```python
 >>> Person = collections.namedtuple('Person', 'name height')
 >>> jean = Person('Jean-Luc', 187)
@@ -411,7 +399,7 @@ Format
 'Jean-Luc is 1.87 meters tall.'
 ```
 
-<h3 id="options">选项</h3>
+<h3 id="options">选项（Options）</h3>
 ```python
 {<obj>:<10}                             # '<obj>     '.
 {<obj>:^10}                             # '  <obj>   '.
@@ -424,7 +412,7 @@ Format
 * **在 expression 后添加 `'='` 会在结果前附上该 expression，例如 `f'{1+1=}'` 返回 `'1+1=2'`。**
 * **在 expression 后添加 `'!r'` 会先调用结果的 [repr()](#class) method，再调用 format()。**
 
-### Strings
+<h3 id="strings">字符串（Strings）</h3>
 ```python
 {'abcde':10}                            # 'abcde     '.
 {'abcde':10.3}                          # 'abc       '.
@@ -432,7 +420,7 @@ Format
 {'abcde'!r:10}                          # "'abcde'   ".
 ```
 
-### Numbers
+<h3 id="numbers">数值（Numbers）</h3>
 ```python
 {123456:10}                             # '    123456'.
 {123456:10,}                            # '   123,456'.
@@ -441,7 +429,7 @@ Format
 {123456:=+10}                           # '+   123456'.
 ```
 
-### Floats
+<h3 id="floats">浮点数（Floats）</h3>
 ```python
 {1.23456:10.3}                          # '      1.23'.
 {1.23456:10.3f}                         # '     1.235'.
@@ -481,7 +469,7 @@ Format
 * **恰好可以向上或向下舍入时，选择末位为偶数的结果。因此 `'{6.5:.0f}'` 得到 `'6'`，`'{7.5:.0f}'` 得到 `'8'`。**
 * **上一规则只适用于能由 float 精确表示的数（如 `.5`、`.25` 等）。**
 
-### Ints
+<h3 id="ints">整数（Ints）</h3>
 ```python
 {90:x}                                  # 将 90 转换为 hexadecimal 数字 '5a'。
 {90:b}                                  # 将 90 转换为 binary 数字 '1011010'。
@@ -489,8 +477,7 @@ Format
 ```
 
 
-Numbers
--------
+<h2 id="numbers-1">数值（Numbers）</h2>
 ```python
 <integer> = int(<float/str/bool>)             # 表示整数，将 floats 向零截断。
 <float>   = float(<integer/str/bool>)         # 8-byte 浮点数。也可用 <fl>e±<int>。
@@ -504,7 +491,7 @@ Numbers
 * **使用 `'decimal.getcontext().prec = <int>'` 设置 Decimal 运算的精度。**
 * **凡是接受 int 的地方通常也可以使用 bool，因为 bool 是 int 的 subclass：`'True + 1 == 2'`。**
 
-### Built-in
+<h3 id="builtin">内置函数（Built-in）</h3>
 ```python
 <num> = abs(<num>)                            # 例如 `abs(-50) == abs(50) == 50`.
 <num> = pow(<num>, <num>)                     # 例如 `pow(3, 4) == 3 ** 4 == 81`.
@@ -513,7 +500,7 @@ Numbers
 <num> = sum(<coll_of_nums>)                   # 也可用 `math.prod(<coll_of_nums>)`.
 ```
 
-### Math
+<h3 id="math">数学运算（Math）</h3>
 ```python
 import math as mt
 <num> = mt.pi/inf/nan                         # `inf*0` 和 `nan+1` 返回 `nan`。
@@ -522,7 +509,7 @@ import math as mt
 <num> = mt.log/log10/log2(<num>)              # log() 还接受 'base' argument。
 ```
 
-### Statistics
+<h3 id="statistics">统计（Statistics）</h3>
 ```python
 import statistics as st
 <obj>  = st.mean/median(<coll>)               # mode() 返回出现次数最多的 element。
@@ -530,7 +517,7 @@ import statistics as st
 <list> = st.quantiles(<coll>, n=4)            # 估计样本的切分点。
 ```
 
-### Random
+<h3 id="random">随机数（Random）</h3>
 ```python
 import random as rd
 <num> = rd.random()                           # 从 [0, 1) 中随机选择 float。
@@ -540,14 +527,14 @@ import random as rd
 rd.shuffle(<list>)                            # 适用于所有 mutable sequences。
 ```
 
-### Hex, Bin
+<h3 id="hexbin">十六进制与二进制（Hex, Bin）</h3>
 ```python
 <int> = 0x<hex>                               # 例如 `0xFf == 255`. Also 0b<bin>.
 <int> = int('±<hex>', 16)                     # 也可用 int('±0x<hex>/±0b<bin>', 0).
 <str> = hex(<int>)                            # 返回 '[-]0x<hex>'。也可用 bin()。
 ```
 
-### Bitwise
+<h3 id="bitwise">位运算（Bitwise）</h3>
 ```python
 <int> = <int> & <int>                         # 例如 `0b1100 & 0b1010 == 0b1000`.
 <int> = <int> | <int>                         # 例如 `0b1100 | 0b1010 == 0b1110`.
@@ -557,8 +544,7 @@ rd.shuffle(<list>)                            # 适用于所有 mutable sequence
 ```
 
 
-Combinatorics
--------------
+<h2 id="combinatorics">组合运算（Combinatorics）</h2>
 ```python
 import itertools as it
 ```
@@ -585,8 +571,7 @@ import itertools as it
 ```
 
 
-Datetime
---------
+<h2 id="datetime">日期与时间（Datetime）</h2>
 **提供 date、time 和 datetime objects 的 module。**
 
 ```python
@@ -606,14 +591,14 @@ import zoneinfo, dateutil.tz
 * **Timedelta 将 arguments 规范化为 ±days、seconds（小于 86 400）和 microseconds（小于 1M）。str() method 返回 `'[±D, ]H:MM:SS[.…]'`，total_seconds() 则返回以秒为单位的 float。**
 * **使用 `'<D/DT>.weekday()'` 获取表示星期几的 int，星期一为 0。**
 
-### Now
+<h3 id="now">当前时间（Now）</h3>
 ```python
 <D/DTn> = D/DT.today()                      # 当前本地日期或 naive datetime。也可用 DT.now()。
 <DTa>   = DT.now(<tzinfo>)                  # 指定 timezone 中当前时刻的 aware datetime。
 ```
 * **使用 `'<DTn>.time()'`、`'<DTa>.time()'` 或 `'<DTa>.timetz()'` 提取 time。**
 
-### Timezone
+<h3 id="timezone">时区（Timezone）</h3>
 ```python
 <tzinfo> = timezone.utc                     # Coordinated Universal Time，相当于不实行 DST 的伦敦时间。
 <tzinfo> = timezone(<timedelta>)            # 与 UTC 相差固定偏移的 timezone。
@@ -625,7 +610,7 @@ import zoneinfo, dateutil.tz
 * **tzlocal()、ZoneInfo() 返回的 timezone，以及 naive objects 隐含的本地 timezone，其偏移量会因 DST 和历史上的基础偏移调整而随时间变化。**
 * **在 Windows 上使用 ZoneInfo() 前，运行 `'> pip3 install tzdata'`。**
 
-### Encode
+<h3 id="encode">编码（Encode）</h3>
 ```python
 <D/T/DT> = D/T/DT.fromisoformat(<str>)      # 从 ISO string 创建 object；格式错误时抛出 ValueError。
 <DT>     = DT.strptime(<str>, '<format>')   # 从自定义 string 创建 naive 或 aware datetime。
@@ -636,7 +621,7 @@ import zoneinfo, dateutil.tz
 * **ISO strings 的形式为 `'YYYY-MM-DD'`、`'HH:MM:SS.mmmuuu[±HH:MM]'`，或两者以任意字符连接。小时之后的各部分均可省略。**
 * **Python 使用 Unix epoch：`'1970-01-01 00:00 UTC'`、`'1970-01-01 01:00 CET'` 等。**
 
-### Decode
+<h3 id="decode">解码（Decode）</h3>
 ```python
 <str>    = <D/T/DT>.isoformat(sep='T')      # 也可用 `timespec='auto/hours/minutes/seconds/…'`.
 <str>    = <D/T/DT>.strftime('<format>')    # 返回 object 的自定义 string 表示形式。
@@ -645,7 +630,7 @@ import zoneinfo, dateutil.tz
 <float>  = <DTa>.timestamp()                # 将 aware datetime 转为自 epoch 起的秒数。
 ```
 
-### Format
+<h3 id="format-1">格式化（Format）</h3>
 ```python
 >>> dta = datetime.strptime('2025-08-14 23:39:00.00 +0200', '%Y-%m-%d %H:%M:%S.%f %z')
 >>> dta.strftime("%dth of %B '%y (%a), %I:%M %p %Z")
@@ -654,7 +639,7 @@ import zoneinfo, dateutil.tz
 * **`'%z'` 接受 `'±HH[:]MM'`，返回 `'±HHMM'`；若 object 为 naive，则返回空 string。**
 * **`'%Z'` 接受 `'UTC'`、`'GMT'` 或本地 timezone 的代码，返回 timezone 名称；无名称时返回 `'UTC[±HH:MM]'`，object 为 naive 时返回空 string。**
 
-### Arithmetics
+<h3 id="arithmetics">算术运算（Arithmetics）</h3>
 ```python
 <bool>  =  <D/DTn>  >  <D/DTn>              # 忽略时钟回拨（fold attribute）。也适用于 `==`。
 <bool>  =  <DTa>    >  <DTa>                # 共享同一 tzinfo object 时，忽略时钟回拨。
@@ -665,8 +650,7 @@ import zoneinfo, dateutil.tz
 ```
 
 
-Function
---------
+<h2 id="function">函数（Function）</h2>
 **独立的代码块，在调用时返回 value。**
 
 ```python
@@ -679,7 +663,7 @@ def my_func(<nondef_args>, <def_args>): ...           # 例如 `my_func(x, y=0):
 * **Default argument 的 value 在其 scope 内首次执行到 function 定义时求值。**
 * **对 default argument value 的修改会在多次 function 调用之间保留！**
 
-### Function Call
+<h3 id="functioncall">函数调用（Function Call）</h3>
 
 ```python
 <obj> = <func>(<positional_args>)                     # 例如 `my_func(0, 0)`.
@@ -688,8 +672,7 @@ def my_func(<nondef_args>, <def_args>): ...           # 例如 `my_func(x, y=0):
 ```
 
 
-Splat
------
+<h2 id="splat">星号展开（Splat）</h2>
 **Splat operator（`'*'`）将 collection 展开为 positional arguments；splatty-splat（`'**'`）将 dictionary 展开为 keyword arguments。**
 ```python
 args, kwargs = (1, 2), {'z': 3}
@@ -701,7 +684,7 @@ func(*args, **kwargs)
 func(1, 2, z=3)
 ```
 
-### Inside Function Def
+<h3 id="insidefunctiondef">函数定义中的展开（Inside Function Def）</h3>
 **Splat 将零个或多个 positional arguments 收集为 tuple；splatty-splat 将零个或多个 keyword arguments 收集为 dictionary。**
 ```python
 def add(*args):
@@ -723,12 +706,12 @@ def add(*args):
 +-------------------------+--------------+--------------+------------+
 ```
 
-### Collection Unpacking
+<h3 id="collectionunpacking">集合解包（Collection Unpacking）</h3>
 ```python
 head, *body, tail = <collection>    # 头或尾可以省略。
 ```
 
-### Inside Coll Literals
+<h3 id="insidecollliterals">集合字面量中的展开（Inside Coll Literals）</h3>
 ```python
 <list>  = [*<coll> [, ...]]         # 等价于 `list(<coll>) [+ ...]`.
 <tuple> = (*<coll>, [...])          # 等价于 `tuple(<coll>) [+ ...]`.
@@ -737,15 +720,14 @@ head, *body, tail = <collection>    # 头或尾可以省略。
 ```
 
 
-Inline
-------
-### Lambda
+<h2 id="inline">内联写法（Inline）</h2>
+<h3 id="lambda">匿名函数（Lambda）</h3>
 ```python
 <func> = lambda: <return_val>                     # 只有一个 expression 的 function。
 <func> = lambda <arg> [, ...]: <return_val>       # 还允许 default arguments。
 ```
 
-### Comprehensions
+<h3 id="comprehensions">推导式（Comprehensions）</h3>
 ```python
 <list> = [i+1 for i in range(5)]                  # 返回 `[1, 2, 3, 4, 5]`。
 <iter> = (i for i in range(10) if i > 5)          # 返回 `iter([6, 7, 8, 9])`。
@@ -758,7 +740,7 @@ Inline
 ['a1', 'a2', 'a3', ..., 'c3']
 ```
 
-### Map, Filter, Reduce
+<h3 id="mapfilterreduce">映射、过滤与归约（Map, Filter, Reduce）</h3>
 ```python
 from functools import reduce
 ```
@@ -769,13 +751,13 @@ from functools import reduce
 <obj>  = reduce(lambda out, x: out+x, range(5))   # 返回 10，也接受 'initial'。
 ```
 
-### Any, All
+<h3 id="anyall">任一与全部判断（Any, All）</h3>
 ```python
 <bool> = any(<collection>)                        # 是否至少有一个 element 满足 bool(<el>) 为 True？
 <bool> = all(<collection>)                        # 是否所有 elements 都为 True？空 collection 也返回 True。
 ```
 
-### Conditional Exp
+<h3 id="conditionalexp">条件表达式（Conditional Exp）</h3>
 ```python
 <obj> = <exp> if <condition> else <exp>           # 仅评估一个 expression。
 ```
@@ -785,19 +767,19 @@ from functools import reduce
 ['zero', 1, 2]
 ```
 
-### And, Or
+<h3 id="andor">逻辑与、逻辑或（And, Or）</h3>
 ```python
 <obj> = <exp> and <exp> [and ...]                 # 返回第一个 false 或最后一个 obj。
 <obj> = <exp> or <exp> [or ...]                   # 返回第一个 true 或最后一个 obj。
 ```
 
-### Walrus Operator
+<h3 id="walrusoperator">海象运算符（Walrus Operator）</h3>
 ```python
 >>> [i for ch in '0123' if (i := int(ch))]        # 在 expression 中途给 variable 赋值。
 [1, 2, 3]
 ```
 
-### Named Tuple, Enum, Dataclass
+<h3 id="namedtupleenumdataclass">具名元组、枚举与数据类（Named Tuple, Enum, Dataclass）</h3>
 ```python
 from collections import namedtuple
 Point = namedtuple('Point', 'x y')                # 创建 tuple 的 subclass。
@@ -813,8 +795,7 @@ player = Player(point, direction)                 # 返回其 instance。
 ```
 
 
-Import
-------
+<h2 id="import">导入（Import）</h2>
 **使一个文件能够使用另一个文件中代码的机制。**
 
 ```python
@@ -829,8 +810,7 @@ from <pkg/mod>[.…] import <obj>      # 导入 module、class、func 或 variab
 * **若项目有分散的入口，使用 relative imports：`'from .[…][<pkg/mod>[.…]] import <obj>'`。另一种方式是将代码移到 'src' 目录，在项目根目录添加 ['pyproject.toml'](https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#basic-information)，再运行 `'$ pip3 install -e .'` 安装整个项目。**
 
 
-Closure
--------
+<h2 id="closure">闭包（Closure）</h2>
 **在 Python 中，若 nested function 引用了外层 function 的 value，而外层 function 又返回了这个 nested function，就形成了 closure。多个 nested functions 引用的同一 value 会被共享。**
 
 ```python
@@ -846,7 +826,7 @@ def get_multiplier(a):
 30
 ```
 
-### Partial
+<h3 id="partial">偏函数（Partial）</h3>
 **Partial 通过预先保存部分或全部 arguments 来包装 function。需要将 function 作为 argument 传递时很有用，例如 `'collections.defaultdict(<func>)'`、`'iter(<func>, to_exc)'` 和 `'dataclasses.field(default_factory=<func>)'`。**
 
 ```python
@@ -861,7 +841,7 @@ def mul(a, b):
 30
 ```
 
-### Non-Local
+<h3 id="nonlocal">非局部变量（Non-Local）</h3>
 **只要 variable 在 scope（即 function body）内的任意位置被赋值，就会被视为 local variable，除非在首次使用前声明为 `'global'` 或 `'nonlocal'`。**
 
 ```python
@@ -881,8 +861,7 @@ def get_counter():
 ```
 
 
-Decorator
----------
+<h2 id="decorator">装饰器（Decorator）</h2>
 **Decorator 接受 function，为其添加功能后返回。它可以是任意 [callable](#callable)，通常实现为返回 [closure](#closure) 的 function。**
 
 ```python
@@ -891,7 +870,7 @@ def func_that_is_passed_to_dec():
     ...
 ```
 
-### Debugger
+<h3 id="debugger">调试器（Debugger）</h3>
 **每次调用 function 时打印其名称。使用 `'@wraps'` decorator 将 metadata 从 func() 复制到 out()；否则 `'add.__name__'` 会返回 `'out'`。**
 
 ```python
@@ -909,7 +888,7 @@ def add(x, y):
     return x + y
 ```
 
-### Cache
+<h3 id="cache">缓存（Cache）</h3>
 **保存 function 的 return values 并在后续调用中复用。用 `'<func>.cache_clear()'` 清空 cache，或改用 `'@lru_cache(maxsize=<int>)'` decorator。**
 
 ```python
@@ -922,7 +901,7 @@ def fibonacci(n):
 * **CPython interpreter 默认将 recursion depth 限制为 3000。**
 * **使用 `'sys.setrecursionlimit(<int>)'` 提高此限制。**
 
-### Debug with Args
+<h3 id="debugwithargs">带参数的调试装饰器（Debug with Args）</h3>
 **打印 function 名称，并可选择打印结果的 decorator。**
 ```python
 from functools import wraps
@@ -946,8 +925,7 @@ def add(x, y):
 * **这里不能直接使用不带 arguments 的 `'@debug'`，否则 add() 会被传给 'print_result' argument。可将定义改为 `'def debug(fn=None, *, ...)'`，并以 `'return decorator(fn) if fn else decorator'` 作为最后一行。**
 
 
-Class
------
+<h2 id="class">类（Class）</h2>
 **用于创建自定义 objects 的模板。**
 
 ```python
@@ -991,7 +969,7 @@ str/repr/print({obj: obj})
 str/repr/print(MyDataClass(obj))
 ```
 
-### Subclass
+<h3 id="subclass">子类（Subclass）</h3>
 * **Inheritance 允许一个 class 扩展另一个 class，即 subclass 扩展其 parent，并继承其所有 methods 和 attributes。**
 * **Subclass 可以添加自己的 methods 和 attributes，也可以通过使用相同名称来 override 继承的成员。**
 
@@ -1018,7 +996,7 @@ class Employee(Person):
 [Employee('Ann', 0), Person('Bob')]
 ```
 
-### Type Annotations
+<h3 id="typeannotations">类型注解（Type Annotations）</h3>
 **供 [mypy](https://pypi.org/project/mypy/) 和 [Pydantic](https://pypi.org/project/pydantic/) 等 type checkers 使用，CPython interpreter 不会强制检查。Function annotation 的写法为 `'def f(a: int = 0) -> int: ...'`。**
 ```python
 from collections.abc import *
@@ -1028,7 +1006,7 @@ from collections.abc import *
 <name>: tuple/dict[<type>, ...] [= <obj>]
 ```
 
-### Dataclass
+<h3 id="dataclass">数据类（Dataclass）</h3>
 **根据 class variables 自动生成 init()、repr() 和 eq() special methods。**
 ```python
 import dataclasses as dc
@@ -1053,7 +1031,7 @@ P = dc.make_dataclass('P', [('x', float), ('y', float)])
 P = dc.make_dataclass('P', [('x', float, 0), ('y', float, 0)])
 ```
 
-### Property
+<h3 id="property">属性（Property）</h3>
 **实现 getters 和 setters 的 Pythonic 方式。**
 ```python
 class Person:
@@ -1073,7 +1051,7 @@ class Person:
 'Guido van Rossum'
 ```
 
-### Slots
+<h3 id="slots">属性槽（Slots）</h3>
 **将 object 限制为只包含指定 attributes 的机制。**
 
 ```python
@@ -1081,18 +1059,17 @@ class Point:
     __slots__ = ('x', 'y')
 ```
 
-### Copy
+<h3 id="copy">复制（Copy）</h3>
 ```python
 from copy import copy, deepcopy
 <object> = copy/deepcopy(<object>)
 ```
 
 
-Duck Types
-----------
+<h2 id="ducktypes">鸭子类型（Duck Types）</h2>
 **Duck type 是一种隐式 type，规定了一组 special methods。任何实现了这些 methods 的 object 都被视为属于该 duck type。**
 
-### Comparable
+<h3 id="comparable">可比较对象（Comparable）</h3>
 * **如果未 override eq() method，它会返回 `'id(self) == id(other)'`，等价于 `'self is other'`。因此不同的自定义 objects 默认不相等，因为 id() 返回唯一的 object 内存地址。**
 * **通常只调用左侧 object 的 eq() method；若返回 NotImplemented，才尝试右侧 object。两者都返回 NotImplemented 时，结果为 False。**
 * **定义了 eq() 的 object 自动支持 ne() method（由 `'!='` 调用）。**
@@ -1107,7 +1084,7 @@ class MyComparable:
         return NotImplemented
 ```
 
-### Hashable
+<h3 id="hashable">可哈希对象（Hashable）</h3>
 * **Hashable object 需要 hash() 和 eq() methods，且 hash value 必须始终不变。**
 * **比较结果相等的 hashable objects 必须具有相同的 hash value，所以默认返回 `'id(self)'` 的 hash() 不适用。因此，只实现 eq() 时，Python 会自动将 class 设为 unhashable。**
 
@@ -1126,7 +1103,7 @@ class MyHashable:
         return hash(self.a)
 ```
 
-### Sortable
+<h3 id="sortable">可排序对象（Sortable）</h3>
 * **使用 'total_ordering' decorator 时，只需实现 eq() 以及 lt()、gt()、le()、ge() 中的一个 special method（分别由 <、>、<=、>= 调用），其余会自动生成。**
 * **Built-in functions sorted() 和 min() 只需要 lt() method，max() 只需要 gt()。不过最好全部定义，以免在其他场景中产生歧义。**
 * **比较两个 lists、strings 或 dataclasses 时，会逐项比较 values，直到找到不相等的一对，再返回这两个 values 的比较结果。若所有对应 values 都相等，较短的 sequence 更小。**
@@ -1149,7 +1126,7 @@ class MySortable:
         return NotImplemented
 ```
 
-### Iterator
+<h3 id="iterator-1">迭代器（Iterator）</h3>
 * **同时拥有 next() 和 iter() special methods 的 object 就是 iterator。**
 * **next() 应返回下一个 item，或抛出 StopIteration exception。**
 * **iter() 应返回原 iterator，即 'self' argument。**
@@ -1177,7 +1154,7 @@ class Counter:
 * **Generator [functions](#generator) 和 [expressions](#comprehensions) 返回的 generator objects。**
 * **[open()](#open) function 返回的 file objects、[SQLite](#sqlite) cursor objects 等。**
 
-### Callable
+<h3 id="callable">可调用对象（Callable）</h3>
 * **所有 functions 和 classes 都有 call() method，在被调用时执行。**
 * **使用 `'callable(<obj>)'` 或 `'isinstance(<obj>, collections.abc.Callable)'` 检查 object 是否 callable，用 `'inspect.signature(<obj>)'` 获取 arguments 信息。**
 * **本文将 `'<function>'` 写作 argument 时，实际指 `'<callable>'`。**
@@ -1196,7 +1173,7 @@ class Counter:
 (1, 2, 3)
 ```
 
-### Context Manager
+<h3 id="contextmanager">上下文管理器（Context Manager）</h3>
 * **With statement 只适用于拥有 enter() 和 exit() special methods 的 objects。**
 * **enter() 应锁定资源，并可返回 object（如 file、socket 等）。**
 * **exit() 应释放资源，例如关闭文件、释放 lock 等。**
@@ -1221,9 +1198,8 @@ Hello World!
 ```
 
 
-Iterable Duck Types
--------------------
-### Iterable
+<h2 id="iterableducktypes">可迭代鸭子类型（Iterable Duck Types）</h2>
+<h3 id="iterable">可迭代对象（Iterable）</h3>
 * **只需实现 iter() special method，返回遍历 object 中 items 的 iterator。**
 * **定义了 iter() 的 object 自动支持 contains() special method。**
 ```python
@@ -1244,7 +1220,7 @@ class MyIterable:
 True
 ```
 
-### Collection
+<h3 id="collection">集合容器（Collection）</h3>
 * **只需实现 iter() 和 len() methods；len() 应返回 collection 的长度。**
 * **本文把所有 iterable objects 都称为 collections，这在技术上并不准确。选择 collection 是因为 iterable 听起来更抽象。这样做的主要问题是：读者可能误以为某些 functions 不接受 iterators，尽管实际上接受，因为 iterators 是内置 objects 中 iterable 但并非 collection 的一类。**
 ```python
@@ -1259,7 +1235,7 @@ class MyCollection:
         return len(self.a)
 ```
 
-### Sequence
+<h3 id="sequence">序列（Sequence）</h3>
 * **只需实现 len() 和 getitem() methods。getitem() 应返回指定 index 处的 item，或抛出 IndexError；也可以支持负数 indices 和 slices。**
 * **定义了 getitem() 的 object 自动支持 iter() 和 contains()。**
 * **定义了 len() 和 getitem() 的 object 自动支持 reversed()，返回反向遍历其 items 的 iterator。**
@@ -1283,7 +1259,7 @@ class MySequence:
 * **Python [术语表](https://docs.python.org/3/glossary.html) 将拥有 iter() 或 getitem() special methods 的 object 定义为 iterable，将拥有 getitem() 和 len() 的 object 定义为 sequence；未定义 _collection_ 一词。**
 * **将 [ABC](#abstract-base-classes) Iterable 用于 isinstance() 或 issubclass() 时，只检查 object/class 是否有 iter() special method；ABC Collection 则检查 iter()、contains() 和 len()。**
 
-### ABC Sequence
+<h3 id="abcsequence">序列抽象基类（ABC Sequence）</h3>
 * **相比基本 sequence，它提供更丰富的 interface，同样只要求实现 len() 和 getitem()。**
 * **继承它后，会自动获得 iter()、contains()、reversed()、index() 和 count() special methods。**
 * **与 `'abc.Iterable'`、`'abc.Collection'` 不同，它不是 duck type。因此，即使 MySequence 定义了所有 methods，`'issubclass(MySequence, abc.Sequence)'` 仍返回 False。不过 list、tuple、range、string、bytes、bytearray、array、memoryview 和 deque 已注册为 Sequence 的 virtual subclasses，因此能被识别。**
@@ -1317,8 +1293,7 @@ class MyAbcSequence(abc.Sequence):
 * **MutableSequence、Set、MutableSet、Mapping 和 MutableMapping ABCs 也支持继承。使用 `'<abc>.__abstractmethods__'` 获取必须实现的 methods 名称。**
 
 
-Enum
-----
+<h2 id="enum">枚举（Enum）</h2>
 **由具名 constants 组成的 class，这些 constants 称为 members。**
 
 ```python
@@ -1354,7 +1329,7 @@ class MyEnum(Enum):
 <memb> = random.choice(list(<enum>))   # 随机选择枚举的成员之一。
 ```
 
-### Inline
+<h3 id="inline-2">内联写法（Inline）</h3>
 ```python
 Cutlery = Enum('Cutlery', 'FORK KNIFE SPOON')
 Cutlery = Enum('Cutlery', ['FORK', 'KNIFE', 'SPOON'])
@@ -1370,8 +1345,7 @@ LogicOp = Enum('LogicOp', {'AND': and_, 'OR': or_})
 ```
 
 
-Exceptions
-----------
+<h2 id="exceptions">异常（Exceptions）</h2>
 ```python
 try:
     <code>
@@ -1379,7 +1353,7 @@ except <exception>:
     <code>
 ```
 
-### Full Try Statement
+<h3 id="fulltrystatement">完整异常处理语句（Full Try Statement）</h3>
 ```python
 try:
     <code_1>
@@ -1397,7 +1371,7 @@ finally:
 * **已执行 blocks 中初始化的 variables，在后续 blocks 和 try statement 外也可见；只有 function block 会划分 scope。**
 * **使用 `'signal.signal(signal_number, my_handler_function)'` 捕获 signals。**
 
-### Catching Exceptions
+<h3 id="catchingexceptions">捕获异常（Catching Exceptions）</h3>
 ```python
 except <exception>: ...
 except <exception> as <name>: ...
@@ -1409,7 +1383,7 @@ except (<exception>, ...) [as <name>]: ...
 * **使用 `'logging.exception(<str>)'` 记录消息，并附上捕获到的 exception 的完整错误信息。Logger 配置见 [Logging](#logging)。**
 * **`'sys.exc_info()'` 以 tuple 返回被捕获 exception 的 type、object 和 traceback。**
 
-### Raising Exceptions
+<h3 id="raisingexceptions">抛出异常（Raising Exceptions）</h3>
 ```python
 raise <exception>
 raise <exception>()
@@ -1423,7 +1397,7 @@ except <exception> [as <name>]:
     raise
 ```
 
-### Exception Object
+<h3 id="exceptionobject">异常对象（Exception Object）</h3>
 ```python
 arguments = <name>.args
 exc_type  = <name>.__class__
@@ -1434,7 +1408,7 @@ trace_str = ''.join(traceback.format_tb(<name>.__traceback__))
 error_msg = ''.join(traceback.format_exception(*sys.exc_info()))
 ```
 
-### Built-in Exceptions
+<h3 id="builtinexceptions">内置异常（Built-in Exceptions）</h3>
 ```text
 BaseException
  +- SystemExit                  # 调用 `sys.exit()` 时引发。有关详细信息，请参阅#Exit。
@@ -1479,15 +1453,14 @@ raise ValueError('Argument has right type but its value is off!')
 raise RuntimeError('I am too lazy to define my own exception!')
 ```
 
-### User-defined Exceptions
+<h3 id="userdefinedexceptions">自定义异常（User-defined Exceptions）</h3>
 ```python
 class MyError(Exception): pass
 class MyInputError(MyError): pass
 ```
 
 
-Exit
-----
+<h2 id="exit">退出（Exit）</h2>
 **通过抛出 SystemExit exception 退出 interpreter。**
 ```python
 import sys
@@ -1497,15 +1470,14 @@ sys.exit(<obj>)                # 打印到 stderr 并以 1 退出。
 ```
 
 
-Print
------
+<h2 id="print">输出（Print）</h2>
 ```python
 print(<obj>, ..., sep=' ', end='\n', file=sys.stdout, flush=False)
 ```
 * **使用 `'file=sys.stderr'` 或 `'sys.stderr.write(<str>)'` 输出错误信息。**
 * **Stdout 和 stderr streams 会将输出保存在 buffer 中，直到收到含 '\n' 或 '\r' 的 string、buffer 达到 4096 个字符、使用 `'flush=True'`，或程序退出。**
 
-### Pretty Print
+<h3 id="prettyprint">美化输出（Pretty Print）</h3>
 ```python
 from pprint import pprint
 pprint(<collection>, width=80, depth=None, compact=False)
@@ -1514,8 +1486,7 @@ pprint(<collection>, width=80, depth=None, compact=False)
 * **达到 `'depth=<int>'` 层的嵌套 collections 显示为 `'...'`。**
 
 
-Input
------
+<h2 id="input">输入（Input）</h2>
 ```python
 <str> = input()
 ```
@@ -1524,15 +1495,14 @@ Input
 * **用户输入 EOF（ctrl-d/ctrl-z⏎）或 stream 已耗尽时，会抛出 EOFError。**
 
 
-Arguments
----------
+<h2 id="arguments">命令行参数（Arguments）</h2>
 ```python
 import sys
 scripts_path = sys.argv[0]
 arguments    = sys.argv[1:]
 ```
 
-### Argument Parser
+<h3 id="argumentparser">参数解析器（Argument Parser）</h3>
 ```python
 from argparse import ArgumentParser
 p = ArgumentParser(description=<str>)                      # 也接受 'usage' str。
@@ -1548,8 +1518,7 @@ args  = p.parse_args()                                     # 因解析错误而�
 * **使用 `'default=<obj>'` 设置 option 或 argument 的 default value。**
 
 
-Open
-----
+<h2 id="open">打开文件（Open）</h2>
 **打开文件，返回对应的 file object。**
 
 ```python
@@ -1560,7 +1529,7 @@ Open
 * **`'newline=""'` 不进行转换，但 readline() 仍按 '\n'、'\r' 和 '\r\n' 分行。传入 `'newline="\n"'` 时只按 '\n' 分行。**
 * **`'newline="\r\n"'` 只按 '\r\n' 分行，写入时将每个 '\n' 转换为 '\r\n'。**
 
-### Modes
+<h3 id="modes">模式（Modes）</h3>
 * **`'r'` — 读取文本（默认）。**
 * **`'w'` — 写入文件，删除原有内容。**
 * **`'x'` — 创建并写入；文件已存在时抛出 FileExistsError。**
@@ -1570,13 +1539,13 @@ Open
 * **`'a+'` — 从文件末尾读写。**
 * **`'rb'` — 读取 [bytes objects](#bytes)；也可用 `'wb'`、`'xb'` 等。**
 
-### Exceptions
+<h3 id="exceptions-1">异常（Exceptions）</h3>
 * **用 `'r'` 或 `'r+'` 读取时可能抛出 `'FileNotFoundError'`。**
 * **用 `'x'` 写入时可能抛出 `'FileExistsError'` exception。**
 * **所有模式都可能抛出 `'IsADirectoryError'` 或 `'PermissionError'`。**
 * **`'except OSError [as <name>]: …'` 可捕获以上所有 exceptions。**
 
-### File Object
+<h3 id="fileobject">文件对象（File Object）</h3>
 ```python
 <file>.seek(0)                    # 将当前位置移动到文件的开头。
 <file>.seek(offset)               # 从文件开头移动 'offset' 个字符或 bytes。
@@ -1599,14 +1568,14 @@ Open
 ```
 * **这些 methods 不会添加或移除末尾的 newline，writelines() 也不例外。**
 
-### Read Text from File
+<h3 id="readtextfromfile">从文件读取文本（Read Text from File）</h3>
 ```python
 def read_file(filename):
     with open(filename, encoding='utf-8') as file:
         return file.readlines()
 ```
 
-### Write Text to File
+<h3 id="writetexttofile">将文本写入文件（Write Text to File）</h3>
 ```python
 def write_to_file(filename, text):
     with open(filename, 'w', encoding='utf-8') as file:
@@ -1614,8 +1583,7 @@ def write_to_file(filename, text):
 ```
 
 
-Paths
------
+<h2 id="paths">路径（Paths）</h2>
 ```python
 import os, glob
 from pathlib import Path
@@ -1649,7 +1617,7 @@ from pathlib import Path
 <num>  = <stat>.st_size/st_mtime/…  # 返回以 bytes 为单位的大小、修改时间等信息。
 ```
 
-### DirEntry
+<h3 id="direntry">目录项（DirEntry）</h3>
 **与 listdir() 不同，scandir() 返回 DirEntry objects，会缓存 isfile、isdir，以及 Windows 上的 stat 信息，显著提升需要这些信息的代码的性能。**
 
 ```python
@@ -1659,7 +1627,7 @@ from pathlib import Path
 <file> = open(<DirEntry>)           # 打开文件并返回其文件 object。
 ```
 
-### Path Object
+<h3 id="pathobject">路径对象（Path Object）</h3>
 ```python
 <Path> = Path(<path> [, ...])       # 接受 strings、Path objects 和 DirEntry objects。
 <Path> = <path> / <path> [/ ...]    # 第一个或第二个 object 必须是 Path object。
@@ -1692,8 +1660,7 @@ from pathlib import Path
 ```
 
 
-OS Commands
------------
+<h2 id="oscommands">操作系统命令（OS Commands）</h2>
 ```python
 import os, shutil as sh
 ```
@@ -1725,8 +1692,7 @@ sh.rmtree(<path>)              # 删除目录及其所有内容。
 * **Functions 通过抛出 OSError 或其 [subclasses](#exceptions-1) 报告错误。**
 
 
-Shell Commands
---------------
+<h2 id="shellcommands">命令解释器命令（Shell Commands）</h2>
 ```python
 import os, subprocess as sp
 ```
@@ -1755,22 +1721,21 @@ CompletedProcess(args='bc', returncode=0, stdout='2\n', stderr='')
 ```
 
 
-JSON
-----
+<h2 id="json">数据交换格式（JSON）</h2>
 ```python
 import json
 <str>  = json.dumps(<list/dict>)  # 将 collection 转换为 JSON string。
 <coll> = json.loads(<str>)        # 将 JSON string 转换为 collection。
 ```
 
-### Read Collection from JSON File
+<h3 id="readcollectionfromjsonfile">从 JSON 文件读取集合（Read Collection from JSON File）</h3>
 ```python
 def read_json_file(filename):
     with open(filename, encoding='utf-8') as file:
         return json.load(file)
 ```
 
-### Write Collection to JSON File
+<h3 id="writecollectiontojsonfile">将集合写入 JSON 文件（Write Collection to JSON File）</h3>
 ```python
 def write_to_json_file(filename, coll):
     with open(filename, 'w', encoding='utf-8') as file:
@@ -1778,22 +1743,21 @@ def write_to_json_file(filename, coll):
 ```
 
 
-Pickle
-------
+<h2 id="pickle">对象序列化（Pickle）</h2>
 ```python
 import pickle
 <bytes>  = pickle.dumps(<object>)  # 将 object 转换为 bytes object。
 <object> = pickle.loads(<bytes>)   # 将 bytes object 转换为 object。
 ```
 
-### Read Object from Pickle File
+<h3 id="readobjectfrompicklefile">从 Pickle 文件读取对象（Read Object from Pickle File）</h3>
 ```python
 def read_pickle_file(filename):
     with open(filename, 'rb') as file:
         return pickle.load(file)
 ```
 
-### Write Object to Pickle File
+<h3 id="writeobjecttopicklefile">将对象写入 Pickle 文件（Write Object to Pickle File）</h3>
 ```python
 def write_to_pickle_file(filename, an_object):
     with open(filename, 'wb') as file:
@@ -1801,8 +1765,7 @@ def write_to_pickle_file(filename, an_object):
 ```
 
 
-CSV
----
+<h2 id="csv">逗号分隔值（CSV）</h2>
 **用于保存 spreadsheet 的文本文件格式。**
 
 ```python
@@ -1819,7 +1782,7 @@ import csv
 * **使用 [Tabulate](#table) 或 PrettyTable library 将 spreadsheet 整齐地打印到 console。**
 * **Reader 接受由 strings 组成的任意 iterator 或 collection，不限于文本文件。**
 
-### Write
+<h3 id="write">写入（Write）</h3>
 ```python
 <file>  = open(<path>, 'a', newline='')        # 打开文本文件进行写入。
 <write> = csv.writer(<file>, 'excel')          # 也接受 `delimiter=','`，见 Params。
@@ -1829,7 +1792,7 @@ import csv
 * **始终向 open() 传入 `'newline=""'`，否则带引号字段中的 newline 可能在 '\n' 与 '\r\n' 之间转换，有时 '\r\n' 甚至变成 '\r\r\n'。此外，行末也无法按传入或 dialect 定义的 `'lineterminator'` parameter 输出。**
 * **使用 `'mode="a"'` 打开现有文件以追加，使用 `'mode="w"'` 覆盖。**
 
-### Params
+<h3 id="params">参数（Params）</h3>
 * **`'dialect'` — 统一设置 default values 的 parameter；接受 string 或 _csv.Dialect_ object。**
 * **`'delimiter'` — 用于分隔字段的单字符 string，如逗号、tab 或分号。**
 * **`'lineterminator'` — 设置 writer 的行结束符；reader 识别 '\n'、'\r' 和 '\r\n'。**
@@ -1839,7 +1802,7 @@ import csv
 * **`'quoting'` — 0：按需；1：全部；2：除数字外全部，数字读为 floats；3：不加引号。**
 * **`'skipinitialspace'` — reader 是否去掉字段开头的空格。**
 
-### Dialects
+<h3 id="dialects">方言配置（Dialects）</h3>
 ```text
 +------------------+--------------+--------------+--------------+
 |                  |     excel    |   excel-tab  |     unix     |
@@ -1854,14 +1817,14 @@ import csv
 +------------------+--------------+--------------+--------------+
 ```
 
-### Read Rows from CSV File
+<h3 id="readrowsfromcsvfile">从 CSV 文件读取行（Read Rows from CSV File）</h3>
 ```python
 def read_csv_file(filename, **csv_params):
     with open(filename, encoding='utf-8', newline='') as file:
         return list(csv.reader(file, **csv_params))
 ```
 
-### Write Rows to CSV File
+<h3 id="writerowstocsvfile">将行写入 CSV 文件（Write Rows to CSV File）</h3>
 ```python
 def write_to_csv_file(filename, rows, mode='w', **csv_params):
     with open(filename, mode, encoding='utf-8', newline='') as file:
@@ -1870,8 +1833,7 @@ def write_to_csv_file(filename, rows, mode='w', **csv_params):
 ```
 
 
-SQLite
-------
+<h2 id="sqlite">嵌入式数据库（SQLite）</h2>
 **无需独立 server 的 database engine，每个 database 保存为一个文件。**
 
 ```python
@@ -1880,14 +1842,14 @@ import sqlite3
 <con>.close()                          # 关闭连接。丢弃未提交的数据。
 ```
 
-### Read
+<h3 id="read">读取（Read）</h3>
 ```python
 <cursor> = <con>.execute('SELECT …')   # 可能抛出 `sqlite3.Error` 的 subclass。
 <tuple>  = <cursor>.fetchone()         # 返回下一行。与 next(<cursor>) 相同。
 <list>   = <cursor>.fetchall()         # 返回剩余行。还有list(<cursor>)。
 ```
 
-### Write
+<h3 id="write-1">写入（Write）</h3>
 ```python
 <con>.execute('INSERT …')              # 可能抛出 `sqlite3.Error` 的 subclass。
 <con>.commit()                         # 保存自上次提交以来的所有更改。
@@ -1900,7 +1862,7 @@ with <con>:                            # 使用 commit() 或 rollback() 退出�
     <con>.execute('INSERT …')          # 取决于是否发生任何 exception。
 ```
 
-### Params
+<h3 id="params-1">参数（Params）</h3>
 ```python
 <con>.execute(<sql>, <list/tuple>)     # 用对应 item 替换每个 '?'。
 <con>.execute(<sql>, <dict/namedtup>)  # 将每个 ':<key>' 替换为匹配的 value。
@@ -1909,7 +1871,7 @@ with <con>:                            # 使用 commit() 或 rollback() 退出�
 * **接受 strings、ints、floats、bytes、None objects 和 bools（存为 1 或 0）。**
 * **除非 table 声明为 strict，否则 columns 不受特定 type 限制。**
 
-<h3 id="example-1">示例</h3>
+<h3 id="example-1">示例（Example）</h3>
 **本例省略了 `'con.commit()'`，所以 values 并未真正保存！**
 ```python
 >>> con = sqlite3.connect('test.db')
@@ -1919,7 +1881,7 @@ with <con>:                            # 使用 commit() 或 rollback() 退出�
 [(1, 'Jean-Luc', 187)]
 ```
 
-### SQLAlchemy
+<h3 id="sqlalchemy">数据库工具库（SQLAlchemy）</h3>
 **通过 SQL、[method chaining](https://docs.sqlalchemy.org/en/latest/tutorial/data_select.html#the-select-sql-expression-construct) 或 [ORM](https://docs.sqlalchemy.org/en/latest/orm/quickstart.html#simple-select) 操作各种 DB systems 的 library。**
 ```python
 # $ pip3 install sqlalchemy
@@ -1942,8 +1904,7 @@ with <con>.begin(): ...                # 退出 block 时执行 commit 或 rollb
 ```
 
 
-Bytes
------
+<h2 id="bytes">字节序列（Bytes）</h2>
 **由单个 bytes 组成的 immutable sequence；mutable 版本称为 bytearray。**
 
 ```python
@@ -1953,7 +1914,7 @@ Bytes
 <bytes> = <bytes>.join(<coll>)       # 使用 bytes 作为 sep 加入 bytes objects。
 ```
 
-### Encode
+<h3 id="encode-1">编码（Encode）</h3>
 ```python
 <bytes> = bytes(<ints>)              # 接受 0 到 255 之间的 integers 的 coll。
 <bytes> = bytes(<str>, 'utf-8')      # 编码 string。与 <str>.encode() 相同。
@@ -1961,7 +1922,7 @@ Bytes
 <bytes> = <int>.to_bytes(n_bytes)    # 接受 `byteorder='little', signed=True`。
 ```
 
-### Decode
+<h3 id="decode-1">解码（Decode）</h3>
 ```python
 <list>  = list(<bytes>)              # 返回 0 到 255 之间的 ints 的 list。
 <str>   = str(<bytes>, 'utf-8')      # 返回 string。与 <bytes>.decode() 相同。
@@ -1970,14 +1931,14 @@ Bytes
 ```
 
 
-### Read Bytes from File
+<h3 id="readbytesfromfile">从文件读取字节（Read Bytes from File）</h3>
 ```python
 def read_bytes(filename):
     with open(filename, 'rb') as file:
         return file.read()
 ```
 
-### Write Bytes to File
+<h3 id="writebytestofile">将字节写入文件（Write Bytes to File）</h3>
 ```python
 def write_bytes(filename, bytes_obj):
     with open(filename, 'wb') as file:
@@ -1985,8 +1946,7 @@ def write_bytes(filename, bytes_obj):
 ```
 
 
-Struct
-------
+<h2 id="struct">二进制结构（Struct）</h2>
 * **在数字 sequence 与 bytes object 之间转换。**
 * **默认使用系统的 type sizes、byte order 和 alignment 规则。**
 
@@ -2004,7 +1964,7 @@ b'\x00\x01\x00\x02\x00\x00\x00\x03'
 (1, 2, 3)
 ```
 
-### Format
+<h3 id="format-2">格式化（Format）</h3>
 <h4 id="forstandardtypesizesandmanualalignmentpaddingstartformatstringwith">使用 standard type sizes 和手动 alignment（padding）时，format string 应以下列字符开头：</h4>
 * **`'='` — 系统的 byte order（通常为 little-endian）。**
 * **`'<'` — Little-endian，即 least significant byte 在前。**
@@ -2026,8 +1986,7 @@ b'\x00\x01\x00\x02\x00\x00\x00\x03'
 * **`'d'` - 双 (8/8)**
 
 
-Array
------
+<h2 id="array">数组（Array）</h2>
 **只能存放符合指定 C type 的数字的 list。可用 types 及最小 byte sizes 见上表。Type sizes 和 byte order 总由系统决定；可调用 byteswap() method 反转每个 element 的 bytes 顺序。**
 
 ```python
@@ -2047,8 +2006,7 @@ from array import array
 ```
 
 
-Memory View
------------
+<h2 id="memoryview">内存视图（Memory View）</h2>
 **指向另一个 bytes-like object 内存的 sequence object。每个 element 按 format 引用一个或多个连续 bytes；可通过 slicing 改变 elements 的顺序和数量。**
 
 ```python
@@ -2073,8 +2031,7 @@ Memory View
 ```
 
 
-Deque
------
+<h2 id="deque">双端队列（Deque）</h2>
 **支持从两端高效 append 和 pop 的 list。**
 
 ```python
@@ -2090,8 +2047,7 @@ from collections import deque
 ```
 
 
-Operator
---------
+<h2 id="operator">运算符（Operator）</h2>
 **提供与 operators 对应功能的 functions 的 module。按 operator precedence 从低到高分组；第一行和第三行内部也按 precedence 排列。**
 ```python
 import operator as op
@@ -2119,8 +2075,7 @@ sorted_by_both   = sorted(<coll>, key=op.itemgetter(1, 0))
 * **比较可以串联：`'x < y < z'` 会转换为 `'(x < y) and (y < z)'`。**
 
 
-Match Statement
----------------
+<h2 id="matchstatement">模式匹配语句（Match Statement）</h2>
 **执行第一个匹配 pattern 的 block。**
 
 ```python
@@ -2130,7 +2085,7 @@ match <obj/expr>:
     ...
 ```
 
-### Patterns
+<h3 id="patterns">匹配模式（Patterns）</h3>
 ```python
 <val_patt> = 1/'a'/True/None/math.pi     # 与 literal 或 attribute 的 value 匹配。
 <cls_patt> = <type>()                    # 匹配该 type（或 ABC）的任何 object。
@@ -2147,7 +2102,7 @@ match <obj/expr>:
 * **可用括号改变 pattern 的 precedence：`'|'` > `'as'` > `','`。例如 `'[1, 2]'` 匹配 `'case 1|2, 2|3 as y if y == 2:'`。**
 * **匹配 case 中绑定的名称及其 body 内初始化的 variables，在 match statement 后仍可见；只有 function block 会划分 scope。**
 
-<h3 id="example-2">示例</h3>
+<h3 id="example-2">示例（Example）</h3>
 ```python
 >>> from pathlib import Path
 >>> match Path('/home/bwk/documents/README.md'):
@@ -2159,8 +2114,7 @@ README.md is bwk's readme file.
 ```
 
 
-Logging
--------
+<h2 id="logging">日志记录（Logging）</h2>
 ```python
 import logging as log
 ```
@@ -2173,7 +2127,7 @@ log.debug/info/warning/error/critical(<str>)    # 将传入消息发送给 root 
 <Logger>.exception(<str>)                       # 附带捕获到的 exception 信息的 `error()`。
 ```
 
-### Setup
+<h3 id="setup">配置（Setup）</h3>
 ```python
 log.basicConfig(
   filename=None,                                # filename 为 None 时打印到 stderr。
@@ -2218,8 +2172,7 @@ CRITICAL:my_module:Missing config file.
 ```
 
 
-Introspection
--------------
+<h2 id="introspection">自省（Introspection）</h2>
 ```python
 <list> = dir()                       # objects 的本地名称，包括functions/classes。
 <dict> = vars()                      # 本地名称及其 objects。与 locals() 相同。
@@ -2236,8 +2189,7 @@ delattr(<obj>, '<name>')             # 从 __dict__ 中删除。还有`del <obj>
 ```
 
 
-Threading
----------
+<h2 id="threading">多线程（Threading）</h2>
 **Threads 是并发运行的 functions，共享 objects 时需谨慎。`'$ uv init --python 3.15t'` 可安装支持在多个 CPU cores 上运行 threads 的 interpreter。**
 
 ```python
@@ -2245,7 +2197,7 @@ import threading as th, queue as qu
 import concurrent.futures as cf
 ```
 
-### Thread
+<h3 id="thread">线程（Thread）</h3>
 ```python
 <Thread> = th.Thread(target=<func>)     # 通过 `args=<coll>` 设置 function 的 arguments。
 <Thread>.start()                        # 在后台运行 function。还有is_alive()。
@@ -2254,7 +2206,7 @@ import concurrent.futures as cf
 * **使用 `'kwargs=<dict>'` 向 function（即 thread 执行的 function）传递 keyword arguments。**
 * **使用 `'daemon=True'`，否则 thread 仍在运行时程序无法退出。**
 
-### Lock
+<h3 id="lock">锁（Lock）</h3>
 ```python
 <lock> = th.Lock/RLock()                # RLock 只能由获取它的 thread 释放。
 <lock>.acquire()                        # 等待/阻止，直到 lock 变得可用。
@@ -2267,14 +2219,14 @@ with <lock>:                            # 通过调用 method acquire() 进入�
     ...                                 # 通过调用 release() 退出它，即使出现错误也是如此。
 ```
 
-### Sync Objects
+<h3 id="syncobjects">同步对象（Sync Objects）</h3>
 ```python
 <Semaphr> = th.Semaphore(value=1)       # 可同时由 value 个 threads 获取的 lock。
 <Event>   = th.Event()                  # `<Event>.wait()` 会阻塞，直到 set() 被调用。
 <Barrier> = th.Barrier(parties)         # wait() 阻塞直到累计被调用 parties 次。
 ```
 
-### Queue
+<h3 id="queue">队列（Queue）</h3>
 ```python
 <Queue> = qu.Queue(maxsize=0)           # First-in-first-out queue，支持 thread safety。
 <Queue>.put(<obj>)                      # 该调用将阻塞，直到 queue 不再满。
@@ -2283,7 +2235,7 @@ with <lock>:                            # 通过调用 method acquire() 进入�
 <obj> = <Queue>.get_nowait()            # Queue 为空时抛出 qu.Empty exception。
 ```
 
-### Thread Executor
+<h3 id="threadexecutor">线程执行器（Thread Executor）</h3>
 ```python
 <Exec> = cf.ThreadPoolExecutor()        # 或 use `with ThreadPoolExecutor() as <name>:`.
 <iter> = <Exec>.map(<fn>, <args>, …)    # 多 thread、非 lazy 的 map()，保持结果顺序。
@@ -2302,8 +2254,7 @@ with <lock>:                            # 通过调用 method acquire() 进入�
 * **ProcessPoolExecutor 支持真正的 parallelism，但传给 workers 或从中返回的内容都必须可 [pickle](#pickle)；queues 应通过 executor 的 'initargs' 和 'initializer' parameters 传入，且应仅在 `'if __name__ == "__main__": …'` 下访问 executor。**
 
 
-Asyncio
--------
+<h2 id="asyncio">异步编程（Asyncio）</h2>
 * **Coroutines 与 threads 有很多共同点，但只在调用其他 coroutine 时交出控制权，且占用更少的内存。**
 * **Coroutine 定义以 `'async'` keyword 开头，调用时使用 `'await'` keyword。**
 * **运行 `'asyncio.run(<coroutine>)'` 启动第一个或主 coroutine。**
@@ -2382,11 +2333,9 @@ if __name__ == '__main__':
 <br>
 
 
-Libraries
-=========
+<h1 id="libraries">库（Libraries）</h1>
 
-Progress Bar
-------------
+<h2 id="progressbar">进度条（Progress Bar）</h2>
 ```python
 # $ pip3 install tqdm
 >>> import tqdm, time
@@ -2396,8 +2345,7 @@ Processing: 100%|████████████████████| 3
 ```
 
 
-Plot
-----
+<h2 id="plot">绘图（Plot）</h2>
 ```python
 # $ pip3 install matplotlib
 import matplotlib.pyplot as plt
@@ -2410,8 +2358,7 @@ plt.clf()                                         # 清除绘图（图）。
 ```
 
 
-Table
------
+<h2 id="table">表格（Table）</h2>
 <h4 id="printsacsvspreadsheettotheconsole">将 CSV spreadsheet 打印到 console：</h4>
 ```python
 # $ pip3 install tabulate
@@ -2422,8 +2369,7 @@ print(tabulate.tabulate(rows, headers='firstrow'))
 ```
 
 
-Console App
------------
+<h2 id="consoleapp">控制台应用（Console App）</h2>
 <h4 id="runsabasicfileexplorerintheconsole">在 console 中运行简单的 file explorer：</h4>
 ```python
 # $ pip3 install windows-curses
@@ -2454,8 +2400,7 @@ if __name__ == '__main__':
 ```
 
 
-GUI App
--------
+<h2 id="guiapp">图形界面应用（GUI App）</h2>
 <h4 id="runsadesktopappforconvertingmetricweightsintopounds">运行将公制重量换算为磅的 desktop app：</h4>
 
 ```python
@@ -2482,8 +2427,7 @@ win.close()
 ```
 
 
-Scraping
---------
+<h2 id="scraping">网页抓取（Scraping）</h2>
 <h4 id="scrapespythonsurlandlogofromitswikipediapage">从 Wikipedia 页面抓取 Python 的 URL 和 logo：</h4>
 ```python
 # $ pip3 install requests beautifulsoup4
@@ -2501,7 +2445,7 @@ with open(filename, 'wb') as file:
 print(f'URL: {python_url}, logo: file://{os.path.abspath(filename)}')
 ```
 
-### Selenium
+<h3 id="selenium">浏览器自动化（Selenium）</h3>
 **用于抓取动态网站内容的 library。**
 ```python
 # $ pip3 install selenium
@@ -2530,8 +2474,7 @@ from selenium import webdriver
 ```
 
 
-Web App
--------
+<h2 id="webapp">网页应用（Web App）</h2>
 **Flask 是 micro web framework，包含一个简单的 WSGI/HTTP server。如果只想在浏览器中打开 HTML 文件，使用 `'webbrowser.open(<path>)'` 即可。**
 ```python
 # $ pip3 install flask
@@ -2546,14 +2489,14 @@ app.run(host=None, port=None, debug=None)  # 或 `$ flask --app FILE run --ARG=�
 * **可搭配 [Waitress](https://flask.palletsprojects.com/en/latest/deploying/waitress/) 等 [WSGI](https://en.wikipedia.org/wiki/Web_Server_Gateway_Interface) server 和 [Nginx](https://flask.palletsprojects.com/en/latest/deploying/nginx/) 等 HTTP server，提高安全性。**
 * **Debug mode 会在 script 变化时重启 app，并在浏览器中显示错误。**
 
-### Serving Files
+<h3 id="servingfiles">提供文件（Serving Files）</h3>
 ```python
 @app.route('/img/<path:filename>')
 def serve_file(filename):
     return fl.send_from_directory('DIRNAME', filename)
 ```
 
-### Serving HTML
+<h3 id="servinghtml">提供 HTML 页面（Serving HTML）</h3>
 ```python
 @app.route('/<sport>')
 def serve_html(sport):
@@ -2564,7 +2507,7 @@ def serve_html(sport):
 * **`'fl.request.args[<str>]'` 读取 query string（URL 中 '?' 右侧部分）中的 parameter。**
 * **`'fl.session[<str>] = <obj>'` 保存 session 数据，`'fl.session.clear()'` 清空它。启动时需要通过 `'app.secret_key = <str>'` 设置 session cookie key。**
 
-### Serving JSON
+<h3 id="servingjson">提供 JSON 数据（Serving JSON）</h3>
 ```python
 @app.post('/<sport>/odds')
 def serve_json(sport):
@@ -2584,8 +2527,7 @@ def serve_json(sport):
 ```
 
 
-Profiling
----------
+<h2 id="profiling">性能分析（Profiling）</h2>
 
 ```python
 from time import perf_counter
@@ -2594,14 +2536,14 @@ start_time = perf_counter()
 seconds = perf_counter() - start_time
 ```
 
-### Timing a Snippet
+<h3 id="timingasnippet">代码片段计时（Timing a Snippet）</h3>
 ```python
 >>> from timeit import timeit
 >>> timeit('list(range(10_000))', number=1000, globals=globals())
 0.19373
 ```
 
-### Profiling by Line
+<h3 id="profilingbyline">逐行性能分析（Profiling by Line）</h3>
 ```text
 $ pip3 install line_profiler
 $ echo '@profile
@@ -2618,7 +2560,7 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
      4         1        534.1    534.1     67.8      b = set(range(10_000))
 ```
 
-### Visualizations
+<h3 id="visualizations">可视化（Visualizations）</h3>
 ```bash
 $ apt install graphviz && pip3 install gprof2dot snakeviz  # 或 install graphviz.exe.
 $ tail -n +2 test.py > test.tmp && mv test.tmp test.py     # 删除第一行。
@@ -2628,7 +2570,7 @@ $ xdg-open test.png                                        # 显示调用图。
 $ snakeviz test.prof                                       # 显示火焰图。
 ```
 
-### Sampling Profilers
+<h3 id="samplingprofilers">采样分析器（Sampling Profilers）</h3>
 ```text
 +--------------+-----------+-------------------------------+-------+------+
 | pip3 install |  Profiles |          How to run           | Lines | Live |
@@ -2641,8 +2583,7 @@ $ snakeviz test.prof                                       # 显示火焰图。
 ```
 
 
-NumPy
------
+<h2 id="numpy">数值计算（NumPy）</h2>
 **用于操作 arrays 的 library，运行速度可达等价 Python 代码的百倍。**
 
 ```python
@@ -2680,7 +2621,7 @@ import numpy as np
 * **Shape 是由各 dimension 大小组成的 tuple。一幅 100×50 的 RGB 图像，其 shape 为 (50, 100, 3)。**
 * **Axis 是 dimension 的 index，最左侧 dimension 的 index 为 0。沿 axis 2 对 RGB 图像求和，得到 shape 为 (50, 100) 的灰度图像。**
 
-### Indexing
+<h3 id="indexing">索引操作（Indexing）</h3>
 ```perl
 <object>   = <2d>[row_index, col_index]             # 或 <3d>[<int>, <int>, <int>].
 <1d_view>  = <2d>[row_index]                        # 或 <3d>[<int>, <int>, <slice>].
@@ -2705,7 +2646,7 @@ import numpy as np
 * **`'ix_([1, 2], [3, 4])'` 返回 `'[[1], [2]]'` 和 `'[[3, 4]]'`。根据 broadcasting 规则，这等价于用 `'[[1, 1], [2, 2]]'` 和 `'[[3, 4], [3, 4]]'` 进行 indexing。**
 * **可将任何能 broadcast 到目标 shape 的 value 赋给选中区域。**
 
-### Broadcasting
+<h3 id="broadcasting">广播机制（Broadcasting）</h3>
 **Arithmetic operations 等操作使用的 array shape 调整机制。**
 ```python
 array_a = np.array([0.1,  0.6,  0.8])               # 即 `array_a.shape == (3,)`.
@@ -2729,7 +2670,7 @@ array_b = np.array([[0.1,  0.1,  0.1],              # 即 `array_b.shape == (3, 
                     [0.8,  0.8,  0.8]])
 ```
 
-<h3 id="example-3">示例</h3>
+<h3 id="example-3">示例（Example）</h3>
 <h4 id="foreachpointreturnsindexofitsnearestpoint010608121">返回每个点最近邻的 index（<code>[0.1, 0.6, 0.8] =&gt; [1, 2, 1]</code>）：</h4>
 
 ```python
@@ -2753,8 +2694,7 @@ array_b = np.array([[0.1,  0.1,  0.1],              # 即 `array_b.shape == (3, 
 ```
 
 
-Image
------
+<h2 id="image">图像（Image）</h2>
 ```python
 # $ pip3 install pillow
 from PIL import Image
@@ -2786,14 +2726,14 @@ from PIL import Image
 <Image> = Image.fromarray(<array>)         # 使用 np.uint8(<arr>.clip(0, 255)) 裁剪 values。
 ```
 
-### Modes
+<h3 id="modes-1">模式（Modes）</h3>
 * **`'L'` — 亮度（灰度图像）。每个 pixel 存为 0 到 255 之间的 int。**
 * **`'RGB'` — 红、绿、蓝（真彩色图像）。每个 pixel 是包含三个 integers 的 tuple。**
 * **`'RGBA'` — 带 alpha 的 RGB。alpha（第四个 int）越小，pixel 越透明。**
 * **`'HSV'` — 色相、饱和度、明度；三个 ints 表示 HSV color space 中的颜色。**
 
 
-<h3 id="examples">示例</h3>
+<h3 id="examples">示例（Examples）</h3>
 <h4 id="createsapngimageofarainbowgradient">创建彩虹渐变的 PNG 图像：</h4>
 ```python
 W, H = 100, 100
@@ -2813,7 +2753,7 @@ img.putdata([(add_noise(h), s, v) for h, s, v in img.getdata()])
 img.show()
 ```
 
-### Image Draw
+<h3 id="imagedraw">图像绘制（Image Draw）</h3>
 ```python
 from PIL import ImageDraw
 <Draw> = ImageDraw.Draw(<Image>)           # 用于向图像添加 2D 图形的 object。
@@ -2831,8 +2771,7 @@ from PIL import ImageDraw
 * **Color 可以是 int、tuple、`'#rrggbb[aa]'` 或颜色名称。**
 
 
-Animation
----------
+<h2 id="animation">动画（Animation）</h2>
 <h4 id="createsagifofabouncingball">创建弹跳小球的 GIF：</h4>
 ```python
 # $ pip3 install imageio
@@ -2852,8 +2791,7 @@ imageio.mimsave('test.gif', frames, duration=0.03)
 ```
 
 
-Audio
------
+<h2 id="audio">音频（Audio）</h2>
 ```python
 import wave
 ```
@@ -2880,7 +2818,7 @@ import wave
 * **每个 sample 由一个或多个 bytes 组成，取决于 sample width。将它们转换为 integer 后，可表示扬声器振膜在该时刻的位移。**
 * **Sample width 为一个 byte 时使用 unsigned encoding；其他大小使用 signed、little-endian byte order，即 least significant byte 在前。**
 
-### Sample Values
+<h3 id="samplevalues">采样值（Sample Values）</h3>
 ```text
 +-----------+-----------+------+-----------+
 | sampwidth |    min    | zero |    max    |
@@ -2891,7 +2829,7 @@ import wave
 +-----------+-----------+------+-----------+
 ```
 
-### Read Float Samples from WAV File
+<h3 id="readfloatsamplesfromwavfile">从 WAV 文件读取浮点采样（Read Float Samples from WAV File）</h3>
 ```python
 def read_wav_file(filename):
     def get_int(bytes_obj):
@@ -2904,7 +2842,7 @@ def read_wav_file(filename):
     return [get_int(b) / pow(2, (p.sampwidth * 8) - 1) for b in samples_b], p
 ```
 
-### Write Float Samples to WAV File
+<h3 id="writefloatsamplestowavfile">将浮点采样写入 WAV 文件（Write Float Samples to WAV File）</h3>
 ```python
 def write_to_wav_file(filename, samples_f, p=None, nchannels=1, sampwidth=2, fs=44100):
     def get_bytes(a_float):
@@ -2918,7 +2856,7 @@ def write_to_wav_file(filename, samples_f, p=None, nchannels=1, sampwidth=2, fs=
         file.writeframes(b''.join(get_bytes(f) for f in samples_f))
 ```
 
-<h3 id="examples-1">示例</h3>
+<h3 id="examples-1">示例（Examples）</h3>
 <h4 id="savesa440hzsinewavetoamonowavfile">将 440 Hz sine wave 保存到 mono WAV 文件：</h4>
 ```python
 from math import sin, pi
@@ -2934,14 +2872,14 @@ samples_f = (f + uniform(-0.02, 0.02) for f in samples_f)
 write_to_wav_file('test.wav', samples_f, p=prms)
 ```
 
-### Audio Player
+<h3 id="audioplayer">音频播放器（Audio Player）</h3>
 ```python
 # $ pip3 install nava
 from nava import play
 play('test.wav')
 ```
 
-### Text to Speech
+<h3 id="texttospeech">文本转语音（Text to Speech）</h3>
 ```python
 # $ pip3 install piper-tts sounddevice
 import os, piper, sounddevice
@@ -2954,8 +2892,7 @@ sounddevice.wait()
 ```
 
 
-Synthesizer
------------
+<h2 id="synthesizer">合成器（Synthesizer）</h2>
 <h4 id="playspopcornbygershonkingsley">播放 Gershon Kingsley 的 Popcorn：</h4>
 
 ```python
@@ -2978,8 +2915,7 @@ play_notes('83♩,81♪,,83♪,,78♪,,74♪,,78♪,,71♪,,,,83♪,,81♪,,83�
 ```
 
 
-Pygame
-------
+<h2 id="pygame">游戏开发（Pygame）</h2>
 <h4 id="opensawindowanddrawsasquarethatcanbemovedwitharrowkeys">打开窗口并绘制可用方向键移动的方块：</h4>
 ```python
 # $ pip3 install pygame
@@ -2999,7 +2935,7 @@ while not pg.event.get(pg.QUIT):
 pg.quit()
 ```
 
-### Rect
+<h3 id="rect">矩形（Rect）</h3>
 **保存左上角位置、宽度和高度。**
 ```python
 <Rect> = pg.Rect(x, y, width, height)        # 创建 Rect object，将传入的 floats 向零截断。
@@ -3015,7 +2951,7 @@ pg.quit()
 <list> = <Rect>.collidelistall(<Rects>)      # 返回所有碰撞矩形的 indices。
 ```
 
-### Surface
+<h3 id="surface">绘图表面（Surface）</h3>
 **保存图像或主窗口的 surface。**
 
 ```python
@@ -3050,13 +2986,13 @@ circle(<Surf>, color, (x, y), radius)        # 也可用 ellipse(<Surf>, color, 
 <Surf> = <Font>.render(<str>, True, color)   # 通过第四个 argument 接受背景颜色。
 ```
 
-### Sound
+<h3 id="sound">声音（Sound）</h3>
 ```python
 <Sound> = pg.mixer.Sound(<path/file>)        # 接受 WAV 文件或由 short integers 组成的 array。
 <Sound>.play/stop()                          # 接受 `loops=-1`。还有set_volume(<float>)。
 ```
 
-<h3 id="basicmariobrothersexample">Mario Brothers 基础示例</h3>
+<h3 id="basicmariobrothersexample">Mario Brothers 基础示例（Basic Mario Brothers Example）</h3>
 ```python
 import pygame as pg, dataclasses as dc, enum, io, itertools, random as r, urllib.request
 
@@ -3134,8 +3070,7 @@ if __name__ == '__main__':
 ```
 
 
-Pandas
-------
+<h2 id="pandas">数据分析（Pandas）</h2>
 **用于数据分析的 library，示例见 [Plotly](#plotly)。**
 
 ```python
@@ -3143,7 +3078,7 @@ Pandas
 import pandas as pd, matplotlib.pyplot as plt
 ```
 
-### Series
+<h3 id="series">序列数据（Series）</h3>
 **带有名称的有序 dictionary。**
 
 ```python
@@ -3217,7 +3152,7 @@ plt.show()                                     # 显示图表。也可用 plt.sa
 +--------------+-------------+-------------+---------------+
 ```
 
-### DataFrame
+<h3 id="dataframe">数据表（DataFrame）</h3>
 **带行、列 labels 的 table。**
 
 ```python
@@ -3332,7 +3267,7 @@ c  6  7
 * **这些 methods 默认处理 columns，传入 `'axis=1'` 则处理 rows；`'<DF>.dropna()'`、`'<DF>.drop(row_key/s)'` 和 `'<DF>.rename(<dict/func>)'` 除外。**
 * **第五个结果的 columns 使用 multi-index。因此需要用 column keys 的 tuple 指定一列：`'<DF>.loc[row_key, (col_key_1, col_key_2)]'`。**
 
-### Multi-Index
+<h3 id="multiindex">多级索引（Multi-Index）</h3>
 ```python
 <DF> = <DF>.loc[row_key_1]                     # 也可用 <DF>.loc[(slice(None), row_key_2), :].
 <DF> = <DF>.loc[:, col_key_1]                  # 等价于 <DF>.xs(col_key_1, axis=1, level=0).
@@ -3341,7 +3276,7 @@ c  6  7
 <S>  = <DF>.stack/unstack(level=-1)            # 将 column keys 与 index 组合，或执行反向操作。
 ```
 
-### File Formats
+<h3 id="fileformats">文件格式（File Formats）</h3>
 ```python
 <S/DF> = pd.read_json/pickle(<path/url/file>)  # 也可用 io.StringIO(<str>), io.BytesIO(<bytes>).
 <DF>   = pd.read_csv/excel(<path/url/file>)    # 也可用 `header/index_col/dtype/usecols/…=<obj>`.
@@ -3360,7 +3295,7 @@ c  6  7
 * **read\_csv() 只解析 'parse\_dates' 中列出的 columns 的日期。它会自动检测 format，也可通过 'date\_format' 或 'dayfirst' arguments 辅助指定。**
 * **若 'parse_dates' argument 包含 'index\_col'，将得到带 DatetimeIndex 的 DataFrame。其 `'resample("y/m/d/h")'` method 返回类似 GroupBy 的 Resampler object。**
 
-### GroupBy
+<h3 id="groupby">分组操作（GroupBy）</h3>
 **按照指定 column 的 value 对 DataFrame rows 分组的 object。**
 
 ```python
@@ -3393,7 +3328,7 @@ z
 6  11  13
 ```
 
-### Rolling
+<h3 id="rolling">滚动窗口（Rolling）</h3>
 **用于 rolling window 计算的 object。**
 
 ```python
@@ -3403,8 +3338,7 @@ z
 ```
 
 
-Plotly
-------
+<h2 id="plotly">交互式绘图（Plotly）</h2>
 ```python
 # $ pip3 install plotly kaleido pandas
 import plotly.express as px, pandas as pd
@@ -3508,8 +3442,8 @@ if __name__ == '__main__':
 ```
 
 
-<h2 id="appendix">附录</h2>
-### Cython
+<h2 id="appendix">附录（Appendix）</h2>
+<h3 id="cython">编译扩展（Cython）</h3>
 **将类似 Python 的代码编译为 C 的 library。**
 
 ```python
@@ -3537,7 +3471,7 @@ cdef class <class_name>:                             # 也可用 `cdef struct <s
         self.<attr_name> = <arg_name>                # 也可用 `... free(<array/pointer>)`.
 ```
 
-### Virtual Environments
+<h3 id="virtualenvironments">虚拟环境（Virtual Environments）</h3>
 **将 libraries 直接安装到项目目录的机制。**
 
 ```perl
@@ -3548,7 +3482,7 @@ $ python3 FILE                 # 在活动环境中运行脚本。还有`./FILE`
 $ deactivate                   # 停用当前活动的 virtual environment。
 ```
 
-### Basic Script Template
+<h3 id="basicscripttemplate">基础脚本模板（Basic Script Template）</h3>
 **使用 `'$ python3 FILE'` 或 `'$ chmod u+x FILE; ./FILE'` 运行 script。若要在未捕获 exception 时自动启动 debugger，运行 `'$ python3 -m pdb -cc FILE'`。**
 ```python
 #!/usr/bin/env python3
@@ -3581,14 +3515,13 @@ if __name__ == '__main__':
 ```
 
 
-Index
------
+<h2 id="index">索引（Index）</h2>
 * **Ctrl+F / ⌘F 通常已足够。**
 * **在[网页](https://alex-shan.github.io/python-cheatsheet/)上搜索 `'#<title>'`，可以将搜索范围限制为标题。**
 * **点击标题旁的 `'#'`，即可获取对应章节的链接。**
 
 
-<h2 id="site-build">本地构建与发布</h2>
+<h2 id="site-build">本地构建与发布（Local Build and Deployment）</h2>
 
 本项目为 [Jure Šorn 的 Python Cheatsheet](https://github.com/gto76/python-cheatsheet) 的简体中文版，维护于 `lang/cn` 分支。正文和自然语言注释使用中文，技术术语、API 和示例代码保留英文。
 

@@ -43,6 +43,7 @@ test('目录覆盖所有二、三级标题，ID 唯一且内部链接均有效',
   }
   for (const [index, heading] of headings.entries()) {
     assert.equal(entries[index].textContent, tocLabel(heading));
+    assert.equal(entries[index].textContent, heading.textContent.replace(/^#/, ''));
     assert.match(entries[index].textContent, /[\u4e00-\u9fff].*（[A-Za-z].*）$/);
     if (heading.tagName === 'H3') assert.ok(entries[index].closest('ul').parentElement.matches('li'));
   }
@@ -50,7 +51,7 @@ test('目录覆盖所有二、三级标题，ID 唯一且内部链接均有效',
   assert.ok(document.getElementById('inline-1'));
   assert.ok(document.getElementById('inline-2'));
   assert.equal(document.querySelector('.site-toc a[href="#list"]').textContent, '列表（List）');
-  assert.equal(document.querySelector('#list').textContent, '#List');
+  assert.equal(document.querySelector('#list').textContent, '#列表（List）');
 });
 
 test('生成的每个代码块均与 README 完全一致，不用硬编码副本覆盖注释', () => {
